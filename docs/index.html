@@ -1,487 +1,407 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OwO Team Battle Results - Live Tracker</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .stat-box {
-            background: rgba(255,255,255,0.2);
-            padding: 15px 30px;
-            border-radius: 10px;
-            margin: 5px;
-        }
-
-        .stat-box h3 {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .stat-box p {
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        .filters {
-            padding: 20px 30px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        .filter-group {
-            margin-bottom: 15px;
-        }
-
-        .filter-group label {
-            font-weight: 600;
-            margin-right: 10px;
-        }
-
-        input[type="text"], select {
-            padding: 8px 15px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 8px 20px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background: #5568d3;
-        }
-
-        .results {
-            padding: 30px;
-        }
-
-        .team-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .team-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .rank {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #667eea;
-            min-width: 50px;
-        }
-
-        .team-info {
-            flex: 1;
-            margin: 0 20px;
-        }
-
-        .animals {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .weapons {
-            color: #666;
-            font-size: 0.95em;
-        }
-
-        .formation {
-            background: #667eea;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        .stats-row {
-            display: flex;
-            gap: 20px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            flex: 1;
-            min-width: 100px;
-            text-align: center;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .stat-item .label {
-            font-size: 0.85em;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .stat-item .value {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-
-        .win-rate {
-            color: #28a745;
-        }
-
-        .tie-rate {
-            color: #ffc107;
-        }
-
-        .loss-rate {
-            color: #dc3545;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #28a745, #ffc107, #dc3545);
-            transition: width 0.3s;
-        }
-
-        .matchup-toggle {
-            margin-top: 15px;
-            cursor: pointer;
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .matchup-details {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .matchup-item {
-            padding: 8px;
-            margin: 5px 0;
-            background: white;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 1.2em;
-            color: #667eea;
-        }
-
-        .last-updated {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9em;
-            border-top: 2px solid #e9ecef;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            .stat-box p {
-                font-size: 1.5em;
-            }
-
-            .team-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .rank {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OwO Team Battle Analyzer - Live Tracker</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1d2430;--text:#e6edf3;--muted:#8b949e;--border:#30363d;--accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--shadow:0 12px 30px rgba(0,0,0,.25)}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#172033 0,#0d1117 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.container{max-width:1400px;margin:auto;padding:28px 20px 50px}.hero{display:flex;gap:18px;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap}.title{font-size:clamp(28px,4vw,48px);font-weight:850;letter-spacing:-.04em;margin:0}.subtitle{color:var(--muted);margin:8px 0 0;max-width:760px;line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;background:rgba(22,27,34,.86);border:1px solid var(--border);padding:12px;border-radius:16px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:10;backdrop-filter:blur(10px)}
+button,.file-label,input,select{font:inherit}.tab{border:1px solid var(--border);background:#21262d;color:var(--text);padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700;transition:all .2s}.tab:hover{background:#2d3643;border-color:var(--accent)}.tab.active{background:var(--accent);color:#07111c;border-color:var(--accent)}
+input[type=text],input[type=number]{min-width:260px;flex:1;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none;transition:border .2s}
+input[type=text]:focus,input[type=number]:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(88,166,255,.15)}
+select{min-width:230px;max-width:320px;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none;font:inherit;transition:border .2s}
+.filter-panel{display:flex;flex-direction:column;gap:8px;flex:1 1 100%;min-width:0}.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.filter-row select{min-width:180px}
+.advanced-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:12px;background:#0d1117;border:1px solid var(--border);border-radius:12px;margin-top:8px}
+.input-group{display:flex;flex-direction:column;gap:5px}.input-group label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}.input-group input,.input-group select{min-width:0;max-width:none}
+.match-filter-row{display:grid;grid-template-columns:minmax(150px,180px) minmax(220px,1fr) auto;gap:8px;align-items:center;padding:8px;background:#0d1117;border:1px solid var(--border);border-radius:12px}.match-filter-row select{min-width:0;max-width:none;width:100%}.filter-help{color:var(--muted);font-size:12px;align-self:center}@media(max-width:600px){.match-filter-row{grid-template-columns:1fr}.filter-row{align-items:stretch}.filter-row select,.filter-row button{width:100%}.advanced-row{grid-template-columns:1fr}}
+.file-label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#21262d;padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700;transition:all .2s}.file-label:hover{background:#2d3643;border-color:var(--accent)}.file-label input{display:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:15px;padding:16px;transition:transform .2s,box-shadow .2s}.stat:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}.stat .n{font-size:26px;font-weight:850}.stat .l{color:var(--muted);font-size:13px;margin-top:4px}
+.notice{padding:11px 13px;border:1px dashed var(--border);background:rgba(22,27,34,.75);border-radius:12px;color:var(--muted);font-size:13px;margin-bottom:18px}.notice strong{color:var(--text)}.notice .pulse{display:inline-block;width:8px;height:8px;background:var(--good);border-radius:50%;animation:pulse 2s ease infinite;margin-right:6px}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.35)}.card-head{display:flex;gap:14px;padding:18px;border-bottom:1px solid var(--border)}.rank{width:44px;height:44px;border-radius:13px;background:#21262d;display:grid;place-items:center;font-size:19px;font-weight:900;flex:none}.rank.gold{background:linear-gradient(135deg,#ffd700,#ffed4e);color:#854d0e}.rank.silver{background:linear-gradient(135deg,#c0c0c0,#e5e5e5);color:#475569}.rank.bronze{background:linear-gradient(135deg,#cd7f32,#e9a168);color:#78350f}
+.team{min-width:0}.team h2{font-size:19px;line-height:1.2;margin:0 0 6px}.meta{display:flex;gap:7px;flex-wrap:wrap;color:var(--muted);font-size:12px}.pill{padding:4px 8px;border-radius:999px;background:#21262d;border:1px solid var(--border)}.pill.formation{background:var(--accent);color:#07111c;font-weight:700;border-color:var(--accent)}.pill.exploit{background:var(--warn);color:#0c0a02;border-color:var(--warn)}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:14px 18px}.metric{background:#0d1117;border:1px solid var(--border);border-radius:11px;padding:10px;transition:transform .2s}.metric:hover{transform:scale(1.05)}.metric .v{font-weight:850;font-size:17px}.metric .k{font-size:11px;color:var(--muted);margin-top:2px}.g{color:var(--good)}.y{color:var(--warn)}.r{color:var(--bad)}
+.details{padding:0 18px 18px}.details summary{cursor:pointer;color:#c9d1d9;font-weight:750;padding:8px 0;transition:color .2s}.details summary:hover{color:var(--accent)}.match-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.matchbox{background:#0d1117;border:1px solid var(--border);border-radius:12px;padding:12px}.matchbox h3{font-size:13px;margin:0 0 10px}.matchbox ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-height:260px;overflow:auto}.matchbox li{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#c9d1d9;padding:6px 0;border-bottom:1px solid #21262d}.matchbox li:last-child{border-bottom:0}.count{color:var(--muted);font-variant-numeric:tabular-nums}.empty{color:var(--muted);font-size:12px}
+footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@media(max-width:950px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.match-cols{grid-template-columns:1fr}.toolbar{position:static}.container{padding:18px 12px 40px}.stats{grid-template-columns:1fr 1fr}input[type=text]{min-width:0;width:100%}}
+.view-controls{display:flex;gap:8px;align-items:center}.limit-control{display:flex;align-items:center;gap:8px}.limit-control label{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}.limit-control select{min-width:120px}
+.btn-export{background:var(--good);color:#fff;border:1px solid var(--good)}.btn-export:hover{background:#2f8f3f}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎮 OwO Team Battle Results</h1>
-            <p>Real-time leaderboard of tested team combinations</p>
-            <div class="stats">
-                <div class="stat-box">
-                    <h3>Teams Tested</h3>
-                    <p id="totalTeams">Loading...</p>
-                </div>
-                <div class="stat-box">
-                    <h3>Best Win+Tie</h3>
-                    <p id="bestRate">Loading...</p>
-                </div>
-                <div class="stat-box">
-                    <h3>Templates</h3>
-                    <p id="totalTemplates">23</p>
-                </div>
-            </div>
-        </header>
+<div class="container">
+  <div class="hero">
+    <div>
+      <h1 class="title">🎮 OwO Team Battle Analyzer</h1>
+      <p class="subtitle">Live tracking & advanced analytics. Filter by matchups, animals, weapons & formations. Data auto-updates every 100 teams.</p>
+    </div>
+  </div>
 
-        <div class="filters">
-            <div class="filter-group">
-                <label>Search:</label>
-                <input type="text" id="searchInput" placeholder="Team, animal, weapon, or formation...">
-                <button onclick="applyFilters()">Search</button>
-                <button onclick="clearFilters()">Clear</button>
-            </div>
-            <div class="filter-group">
-                <label>Sort by:</label>
-                <select id="sortBy" onchange="applyFilters()">
-                    <option value="winTie">Win + Tie Rate</option>
-                    <option value="win">Win Rate Only</option>
-                    <option value="tie">Tie Rate</option>
-                </select>
-                <label>Show:</label>
-                <select id="limitResults" onchange="applyFilters()">
-                    <option value="10">Top 10</option>
-                    <option value="25">Top 25</option>
-                    <option value="50">Top 50</option>
-                    <option value="100">Top 100</option>
-                    <option value="all">All Teams</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="results">
-            <div id="teamsList" class="loading">
-                Loading team data...
-            </div>
-        </div>
-
-        <div class="last-updated" id="lastUpdated">
-            Last updated: Loading...
-        </div>
+  <div class="toolbar">
+    <button class="tab active" id="btnCombined">Top · Win + Tie</button>
+    <button class="tab" id="btnWin">Top · Win Rate</button>
+    
+    <input id="search" type="text" placeholder="🔍 Search team, animal, weapon, or template…" />
+    
+    <div class="view-controls">
+      <div class="limit-control">
+        <label>Show:</label>
+        <select id="limitResults">
+          <option value="10">Top 10</option>
+          <option value="25">Top 25</option>
+          <option value="50">Top 50</option>
+          <option value="100">Top 100</option>
+          <option value="250">Top 250</option>
+          <option value="all">All Teams</option>
+        </select>
+      </div>
+      <button class="tab btn-export" id="exportBtn">📥 Export JSON</button>
     </div>
 
-    <script>
-        let allTeams = [];
-        let filteredTeams = [];
+    <div class="filter-panel">
+      <div class="filter-row">
+        <button class="tab" id="advancedToggle">⚙️ Advanced Filters</button>
+        <select id="logicFilter" title="How multiple matchup filters combine">
+          <option value="all">Match ALL filters</option>
+          <option value="any">Match ANY filter</option>
+        </select>
+        <button class="tab" id="addFilter">+ Matchup Filter</button>
+        <button class="tab" id="clearFilters">Clear All</button>
+      </div>
+      
+      <div id="advancedFilters" style="display:none">
+        <div class="advanced-row">
+          <div class="input-group">
+            <label>Min Win Rate (%)</label>
+            <input type="number" id="minWinRate" min="0" max="100" placeholder="0" />
+          </div>
+          <div class="input-group">
+            <label>Min Win+Tie (%)</label>
+            <input type="number" id="minWinTieRate" min="0" max="100" placeholder="0" />
+          </div>
+          <div class="input-group">
+            <label>Specific Animal</label>
+            <select id="filterAnimal">
+              <option value="">All Animals</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Formation Type</label>
+            <select id="filterFormation">
+              <option value="">All Formations</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Min Matches</label>
+            <input type="number" id="minMatches" min="0" placeholder="0" />
+          </div>
+          <div class="input-group">
+            <label>Weapon Contains</label>
+            <input type="text" id="weaponFilter" placeholder="Weapon name..." />
+          </div>
+        </div>
+      </div>
 
-        async function loadData() {
-            try {
-                const response = await fetch('test_results.json');
-                const data = await response.json();
-                
-                allTeams = data.map(team => {
-                    const total = team.totalWins + team.totalLosses + team.totalTies;
-                    return {
-                        ...team,
-                        winRate: (team.totalWins / total * 100).toFixed(2),
-                        tieRate: (team.totalTies / total * 100).toFixed(2),
-                        lossRate: (team.totalLosses / total * 100).toFixed(2),
-                        winTieRate: ((team.totalWins + team.totalTies) / total * 100).toFixed(2),
-                        totalMatches: total
-                    };
-                });
+      <div id="matchFilters"></div>
+    </div>
 
-                document.getElementById('totalTeams').textContent = allTeams.length.toLocaleString();
-                document.getElementById('bestRate').textContent = allTeams[0]?.winTieRate + '%';
-                document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleString()}`;
+    <span class="filter-help">💡 Add multiple conditions, e.g. <b>Beat A</b> + <b>Beat B</b> + <b>Tie L</b>.</span>
+    <label class="file-label">📂 Load Custom JSON<input id="file" type="file" accept=".json,application/json"></label>
+  </div>
 
-                applyFilters();
-            } catch (error) {
-                document.getElementById('teamsList').innerHTML = '<p>Error loading data. Please try again later.</p>';
-                console.error('Error loading data:', error);
-            }
-        }
+  <div class="notice" id="notice"></div>
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"></div>
+  
+  <footer>
+    <p>🏆 Rankings: (wins + ties) / total matches · wins / total matches. Ties are never discarded.</p>
+    <p style="margin-top:8px">Made with ❤️ for the OwO community · Last updated: <span id="lastUpdated">Loading...</span></p>
+  </footer>
+</div>
 
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const sortBy = document.getElementById('sortBy').value;
-            const limit = document.getElementById('limitResults').value;
+<script>
+let data = [];
+let loadedFull = false;
+let dataSource = 'test_results.json';
+let mode = 'combined';
+let query = '';
+let logicFilter = 'all';
+let matchupFilters = [];
+let limit = 10;
+let uniqueAnimals = new Set();
+let uniqueFormations = new Set();
 
-            // Filter teams
-            filteredTeams = allTeams.filter(team => {
-                if (!searchTerm) return true;
-                
-                const animals = team.combination.animals.join('/').toLowerCase();
-                const weapons = team.combination.weaponNames.join(' / ').toLowerCase();
-                const formation = team.combination._meta?.formation?.toLowerCase() || '';
-                
-                return animals.includes(searchTerm) || 
-                       weapons.includes(searchTerm) || 
-                       formation.includes(searchTerm);
-            });
+// Advanced filters
+let minWinRate = 0;
+let minWinTieRate = 0;
+let filterAnimal = '';
+let filterFormation = '';
+let minMatches = 0;
+let weaponFilter = '';
 
-            // Sort teams
-            filteredTeams.sort((a, b) => {
-                if (sortBy === 'winTie') return parseFloat(b.winTieRate) - parseFloat(a.winTieRate);
-                if (sortBy === 'win') return parseFloat(b.winRate) - parseFloat(a.winRate);
-                if (sortBy === 'tie') return parseFloat(b.tieRate) - parseFloat(a.tieRate);
-                return 0;
-            });
+const $ = id => document.getElementById(id);
 
-            // Limit results
-            const displayTeams = limit === 'all' ? filteredTeams : filteredTeams.slice(0, parseInt(limit));
+function total(t){ return (t.totalWins||0)+(t.totalLosses||0)+(t.totalTies||0); }
+function combinedRate(t){ const n=total(t); return n ? ((t.totalWins||0)+(t.totalTies||0))/n*100 : 0; }
+function winRate(t){ const n=total(t); return n ? (t.totalWins||0)/n*100 : 0; }
+function tieRate(t){ const n=total(t); return n ? (t.totalTies||0)/n*100 : 0; }
+function teamName(t){ return (t.combination?.weaponNames||[]).join(' / ') || 'Unnamed team'; }
+function teamCodes(t){ return (t.combination?.weapons||[]).join(' • '); }
+function animals(t){ return (t.combination?.animals||[]).join(' • '); }
+function allText(t){ return [teamName(t),teamCodes(t),animals(t),...(t.templateResults||[]).map(x=>x.template)].join(' ').toLowerCase(); }
 
-            renderTeams(displayTeams);
-        }
+function filterMatches(t, f){
+  if(!f.template || !f.result) return true;
+  const row=(t.templateResults||[]).find(x=>x.template===f.template);
+  return !!row && (row[f.result]||0)>0;
+}
 
-        function renderTeams(teams) {
-            const container = document.getElementById('teamsList');
-            
-            if (teams.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #666;">No teams found matching your criteria.</p>';
-                return;
-            }
+function matchesAllFilters(t){
+  if(!matchupFilters.length) return true;
+  return logicFilter==='all' ? matchupFilters.every(f=>filterMatches(t,f)) : matchupFilters.some(f=>filterMatches(t,f));
+}
 
-            container.innerHTML = teams.map((team, index) => `
-                <div class="team-card">
-                    <div class="team-header">
-                        <div class="rank">#${index + 1}</div>
-                        <div class="team-info">
-                            <div class="animals">${team.combination.animals.join(' • ')}</div>
-                            <div class="weapons">${team.combination.weaponNames.join(' / ')}</div>
-                        </div>
-                        <div class="formation">${team.combination._meta?.formation || 'Unknown'}</div>
-                    </div>
-                    
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <div class="label">Win Rate</div>
-                            <div class="value win-rate">${team.winRate}%</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="label">Tie Rate</div>
-                            <div class="value tie-rate">${team.tieRate}%</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="label">Loss Rate</div>
-                            <div class="value loss-rate">${team.lossRate}%</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="label">Win+Tie</div>
-                            <div class="value" style="color: #667eea;">${team.winTieRate}%</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="label">Matches</div>
-                            <div class="value">${team.totalMatches}</div>
-                        </div>
-                    </div>
+function matchesAdvancedFilters(t){
+  if(minWinRate > 0 && winRate(t) < minWinRate) return false;
+  if(minWinTieRate > 0 && combinedRate(t) < minWinTieRate) return false;
+  if(filterAnimal && !(t.combination?.animals||[]).includes(filterAnimal)) return false;
+  if(filterFormation && t.combination?._meta?.formation !== filterFormation) return false;
+  if(minMatches > 0 && total(t) < minMatches) return false;
+  if(weaponFilter && !teamName(t).toLowerCase().includes(weaponFilter.toLowerCase())) return false;
+  return true;
+}
 
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${team.winTieRate}%"></div>
-                    </div>
+function templateNames(){
+  return [...new Set(data.flatMap(t=>(t.templateResults||[]).map(x=>x.template)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+}
 
-                    <div class="matchup-toggle" onclick="toggleMatchups(${index})">
-                        ▼ Show template matchups
-                    </div>
-                    <div class="matchup-details" id="matchup-${index}">
-                        ${team.templateResults.map(result => `
-                            <div class="matchup-item">
-                                <span>${result.template}</span>
-                                <span>
-                                    <strong style="color: #28a745;">${result.wins}W</strong> / 
-                                    <strong style="color: #ffc107;">${result.ties}T</strong> / 
-                                    <strong style="color: #dc3545;">${result.losses}L</strong>
-                                </span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
+function populateAdvancedFilters(){
+  const animalSelect = $('filterAnimal');
+  const formationSelect = $('filterFormation');
+  
+  animalSelect.innerHTML = '<option value="">All Animals</option>';
+  formationSelect.innerHTML = '<option value="">All Formations</option>';
+  
+  [...uniqueAnimals].sort().forEach(animal => {
+    const option = document.createElement('option');
+    option.value = animal;
+    option.textContent = animal.charAt(0).toUpperCase() + animal.slice(1);
+    animalSelect.appendChild(option);
+  });
 
-        function toggleMatchups(index) {
-            const element = document.getElementById(`matchup-${index}`);
-            element.style.display = element.style.display === 'none' ? 'block' : 'none';
-        }
+  [...uniqueFormations].sort().forEach(formation => {
+    const option = document.createElement('option');
+    option.value = formation;
+    option.textContent = formation;
+    formationSelect.appendChild(option);
+  });
+}
 
-        function clearFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('sortBy').value = 'winTie';
-            document.getElementById('limitResults').value = '10';
-            applyFilters();
-        }
+function renderMatchFilters(){
+  const names=templateNames();
+  const box=$('matchFilters');
+  if(!matchupFilters.length){ box.innerHTML='<div class="empty">No matchup filters active.</div>'; return; }
+  const opts=names.map(n=>`<option value="${escapeHtml(n).replace(/"/g,'&quot;')}">${escapeHtml(n)}</option>`).join('');
+  box.innerHTML=matchupFilters.map((f,i)=>`<div class="match-filter-row">
+    <select data-i="${i}" data-field="result">
+      <option value="wins" ${f.result==='wins'?'selected':''}>Beat</option>
+      <option value="ties" ${f.result==='ties'?'selected':''}>Tie with</option>
+      <option value="losses" ${f.result==='losses'?'selected':''}>Lose to</option>
+    </select>
+    <select data-i="${i}" data-field="template">
+      <option value="">Choose template…</option>${opts}
+    </select>
+    <button class="tab" data-remove="${i}" title="Remove this filter">✕</button>
+  </div>`).join('');
+  matchupFilters.forEach((f,i)=>{ const el=box.querySelector(`select[data-i="${i}"][data-field="template"]`); if(el) el.value=f.template||''; });
+  box.querySelectorAll('select').forEach(el=>el.onchange=()=>{ const i=Number(el.dataset.i); matchupFilters[i][el.dataset.field]=el.value; render(); });
+  box.querySelectorAll('button[data-remove]').forEach(btn=>btn.onclick=()=>{ matchupFilters.splice(Number(btn.dataset.remove),1); renderMatchFilters(); render(); });
+}
 
-        // Load data on page load
-        loadData();
+function resultList(t,key){ return (t.templateResults||[]).filter(x=>(x[key]||0)>0).sort((a,b)=>(b[key]-a[key])||a.template.localeCompare(b.template)); }
+function pct(n){ return n.toFixed(2)+'%'; }
 
-        // Auto-refresh every 5 minutes
-        setInterval(loadData, 300000);
-    </script>
+function card(t,i){
+  const wins=resultList(t,'wins'), losses=resultList(t,'losses'), ties=resultList(t,'ties');
+  const cr=combinedRate(t), wr=winRate(t), tr=tieRate(t), n=total(t);
+  const formation = t.combination?._meta?.formation || 'Unknown';
+  const isExploit = formation.toLowerCase().includes('exploit') || formation.toLowerCase().includes('stall') || formation.toLowerCase().includes('crune');
+  const rankClass = i===0 ? 'gold' : i===1 ? 'silver' : i===2 ? 'bronze' : '';
+  
+  const matchRows=(arr,key)=>arr.length?arr.map(x=>`<li><span>${escapeHtml(x.template)}</span><span class="count">×${x[key]||0}</span></li>`).join(''):'<li class="empty">None</li>';
+  
+  return `<article class="card">
+    <div class="card-head">
+      <div class="rank ${rankClass}">#${i+1}</div>
+      <div class="team">
+        <h2>${escapeHtml(teamName(t))}</h2>
+        <div class="meta">
+          <span class="pill">${escapeHtml(animals(t)||'No animals')}</span>
+          <span class="pill ${isExploit?'exploit':'formation'}">${escapeHtml(formation)}</span>
+          <span class="pill">${n} matches</span>
+        </div>
+        <div class="meta" style="margin-top:6px"><span>${escapeHtml(teamCodes(t))}</span></div>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="v g">${t.totalWins||0}</div><div class="k">Wins</div></div>
+      <div class="metric"><div class="v y">${t.totalTies||0}</div><div class="k">Ties</div></div>
+      <div class="metric"><div class="v r">${t.totalLosses||0}</div><div class="k">Losses</div></div>
+      <div class="metric"><div class="v">${pct(cr)}</div><div class="k">Win + Tie</div></div>
+      <div class="metric"><div class="v">${pct(wr)}</div><div class="k">Win Rate</div></div>
+    </div>
+    <div class="details">
+      <details>
+        <summary>📊 Show template matchups (${wins.length}W / ${ties.length}T / ${losses.length}L)</summary>
+        <div class="match-cols">
+          <div class="matchbox"><h3 class="g">Won against · ${wins.length}</h3><ul>${matchRows(wins,'wins')}</ul></div>
+          <div class="matchbox"><h3 class="y">Tied against · ${ties.length}</h3><ul>${matchRows(ties,'ties')}</ul></div>
+          <div class="matchbox"><h3 class="r">Lost against · ${losses.length}</h3><ul>${matchRows(losses,'losses')}</ul></div>
+        </div>
+      </details>
+    </div>
+  </article>`;
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+
+function render(){
+  const filtered=data.filter(t=>(!query||allText(t).includes(query.toLowerCase())) && matchesAllFilters(t) && matchesAdvancedFilters(t));
+  filtered.sort((a,b)=>{
+    const A=mode==='combined'?combinedRate(a):winRate(a);
+    const B=mode==='combined'?combinedRate(b):winRate(b);
+    return (B-A)||(total(b)-total(a))||((b.totalWins||0)-(a.totalWins||0))||teamName(a).localeCompare(teamName(b));
+  });
+  
+  const displayLimit = limit === 'all' ? filtered.length : parseInt(limit);
+  const top = filtered.slice(0, displayLimit);
+  
+  $('grid').innerHTML=top.length?top.map(card).join(''):'<div class="notice">No matching teams found. Try adjusting your filters.</div>';
+  
+  const totalTeams=data.length;
+  const withTies=data.filter(t=>(t.totalTies||0)>0).length;
+  const matches=data.reduce((s,t)=>s+total(t),0);
+  const avgWin = totalTeams > 0 ? (data.reduce((s,t)=>s+winRate(t),0)/totalTeams).toFixed(2) : 0;
+  
+  $('stats').innerHTML=`
+    <div class="stat"><div class="n">${totalTeams}</div><div class="l">Teams Tested</div></div>
+    <div class="stat"><div class="n">${avgWin}%</div><div class="l">Avg Win Rate</div></div>
+    <div class="stat"><div class="n">${matches.toLocaleString()}</div><div class="l">Total Matches</div></div>
+    <div class="stat"><div class="n">${top.length}/${filtered.length}</div><div class="l">Showing / Filtered</div></div>
+  `;
+  
+  const liveIndicator = loadedFull ? '<span class="pulse"></span>Live data' : 'Fallback data';
+  $('notice').innerHTML=`<strong>Database:</strong> ${escapeHtml(dataSource)} · ${liveIndicator} · Auto-refreshes every 5 minutes`;
+}
+
+// EVENT LISTENERS
+$('btnCombined').onclick=()=>{mode='combined';$('btnCombined').classList.add('active');$('btnWin').classList.remove('active');render();};
+$('btnWin').onclick=()=>{mode='win';$('btnWin').classList.add('active');$('btnCombined').classList.remove('active');render();};
+$('search').oninput=e=>{query=e.target.value.trim();render();};
+$('logicFilter').onchange=e=>{logicFilter=e.target.value;render();};
+$('addFilter').onclick=()=>{matchupFilters.push({result:'wins',template:''});renderMatchFilters();};
+$('clearFilters').onclick=()=>{
+  matchupFilters=[];
+  minWinRate=0;minWinTieRate=0;filterAnimal='';filterFormation='';minMatches=0;weaponFilter='';
+  $('minWinRate').value='';$('minWinTieRate').value='';$('filterAnimal').value='';
+  $('filterFormation').value='';$('minMatches').value='';$('weaponFilter').value='';
+  renderMatchFilters();render();
+};
+
+$('limitResults').onchange=e=>{limit=e.target.value;render();};
+
+$('advancedToggle').onclick=()=>{
+  const panel=$('advancedFilters');
+  panel.style.display = panel.style.display==='none'?'block':'none';
+};
+
+// Advanced filter inputs
+$('minWinRate').oninput=e=>{minWinRate=parseFloat(e.target.value)||0;render();};
+$('minWinTieRate').oninput=e=>{minWinTieRate=parseFloat(e.target.value)||0;render();};
+$('filterAnimal').onchange=e=>{filterAnimal=e.target.value;render();};
+$('filterFormation').onchange=e=>{filterFormation=e.target.value;render();};
+$('minMatches').oninput=e=>{minMatches=parseInt(e.target.value)||0;render();};
+$('weaponFilter').oninput=e=>{weaponFilter=e.target.value.trim();render();};
+
+$('exportBtn').onclick=()=>{
+  const filtered=data.filter(t=>(!query||allText(t).includes(query.toLowerCase())) && matchesAllFilters(t) && matchesAdvancedFilters(t));
+  const dataStr = JSON.stringify(filtered, null, 2);
+  const blob = new Blob([dataStr], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `owo-teams-export-${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+$('file').onchange=async e=>{
+  const f=e.target.files[0];
+  if(!f)return;
+  try{
+    const parsed=JSON.parse(await f.text());
+    if(!Array.isArray(parsed))throw new Error('JSON root must be an array.');
+    data=parsed;
+    loadedFull=true;
+    dataSource=f.name;
+    
+    // Extract unique values
+    uniqueAnimals.clear();uniqueFormations.clear();
+    data.forEach(team => {
+      (team.combination?.animals||[]).forEach(a => uniqueAnimals.add(a));
+      if(team.combination?._meta?.formation) uniqueFormations.add(team.combination._meta.formation);
+    });
+    
+    matchupFilters=[];
+    populateAdvancedFilters();
+    renderMatchFilters();
+    render();
+  }catch(err){
+    alert('Could not load JSON: '+err.message);
+  }
+};
+
+async function loadDatabase(){
+  try{
+    const res=await fetch('test_results.json',{cache:'no-store'});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const parsed=await res.json();
+    if(!Array.isArray(parsed)) throw new Error('JSON root must be an array.');
+    data=parsed;
+    loadedFull=true;
+    dataSource='test_results.json';
+    
+    // Extract unique values
+    uniqueAnimals.clear();uniqueFormations.clear();
+    data.forEach(team => {
+      (team.combination?.animals||[]).forEach(a => uniqueAnimals.add(a));
+      if(team.combination?._meta?.formation) uniqueFormations.add(team.combination._meta.formation);
+    });
+    
+    matchupFilters=[];
+    populateAdvancedFilters();
+    renderMatchFilters();
+    render();
+    $('lastUpdated').textContent = new Date().toLocaleString();
+  }catch(err){
+    data=[];
+    loadedFull=false;
+    matchupFilters=[];
+    renderMatchFilters();
+    dataSource='No data (test_results.json not found)';
+    render();
+    $('lastUpdated').textContent = 'Never';
+    console.warn('Could not load test_results.json:',err);
+  }
+}
+
+// Auto-refresh every 5 minutes
+setInterval(loadDatabase, 300000);
+
+// INIT
+renderMatchFilters();
+loadDatabase();
+</script>
 </body>
 </html>
