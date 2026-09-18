@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+weapons.json
+animals.json
+results.json
+test_results/

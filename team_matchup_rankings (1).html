@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Team Matchup Rankings</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1d2430;--text:#e6edf3;--muted:#8b949e;--border:#30363d;--accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--shadow:0 12px 30px rgba(0,0,0,.25)}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#172033 0,#0d1117 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.container{max-width:1400px;margin:auto;padding:28px 20px 50px}.hero{display:flex;gap:18px;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap}.title{font-size:clamp(28px,4vw,48px);font-weight:850;letter-spacing:-.04em;margin:0}.subtitle{color:var(--muted);margin:8px 0 0;max-width:760px;line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;background:rgba(22,27,34,.86);border:1px solid var(--border);padding:12px;border-radius:16px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:10;backdrop-filter:blur(10px)}
+button,.file-label,input{font:inherit}.tab{border:1px solid var(--border);background:#21262d;color:var(--text);padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700}.tab.active{background:var(--accent);color:#07111c;border-color:var(--accent)}
+input[type=text]{min-width:260px;flex:1;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none}
+select{min-width:230px;max-width:320px;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none;font:inherit}
+.filter-panel{display:flex;flex-direction:column;gap:8px;flex:1 1 100%;min-width:0}.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.filter-row select{min-width:180px}.match-filter-row{display:grid;grid-template-columns:minmax(150px,180px) minmax(220px,1fr) auto;gap:8px;align-items:center;padding:8px;background:#0d1117;border:1px solid var(--border);border-radius:12px}.match-filter-row select{min-width:0;max-width:none;width:100%}.filter-help{color:var(--muted);font-size:12px;align-self:center}@media(max-width:600px){.match-filter-row{grid-template-columns:1fr}.filter-row{align-items:stretch}.filter-row select,.filter-row button{width:100%}}
+.file-label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#21262d;padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700}.file-label input{display:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:15px;padding:16px}.stat .n{font-size:26px;font-weight:850}.stat .l{color:var(--muted);font-size:13px;margin-top:4px}
+.notice{padding:11px 13px;border:1px dashed var(--border);background:rgba(22,27,34,.75);border-radius:12px;color:var(--muted);font-size:13px;margin-bottom:18px}.notice strong{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.card-head{display:flex;gap:14px;padding:18px;border-bottom:1px solid var(--border)}.rank{width:44px;height:44px;border-radius:13px;background:#21262d;display:grid;place-items:center;font-size:19px;font-weight:900;flex:none}.team{min-width:0}.team h2{font-size:19px;line-height:1.2;margin:0 0 6px}.meta{display:flex;gap:7px;flex-wrap:wrap;color:var(--muted);font-size:12px}.pill{padding:4px 8px;border-radius:999px;background:#21262d;border:1px solid var(--border)}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:14px 18px}.metric{background:#0d1117;border:1px solid var(--border);border-radius:11px;padding:10px}.metric .v{font-weight:850;font-size:17px}.metric .k{font-size:11px;color:var(--muted);margin-top:2px}.g{color:var(--good)}.y{color:var(--warn)}.r{color:var(--bad)}
+.details{padding:0 18px 18px}.details summary{cursor:pointer;color:#c9d1d9;font-weight:750;padding:8px 0}.match-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.matchbox{background:#0d1117;border:1px solid var(--border);border-radius:12px;padding:12px}.matchbox h3{font-size:13px;margin:0 0 10px}.matchbox ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-height:260px;overflow:auto}.matchbox li{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#c9d1d9;padding:6px 0;border-bottom:1px solid #21262d}.matchbox li:last-child{border-bottom:0}.count{color:var(--muted);font-variant-numeric:tabular-nums}.empty{color:var(--muted);font-size:12px}
+footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@media(max-width:950px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.match-cols{grid-template-columns:1fr}.toolbar{position:static}.container{padding:18px 12px 40px}.stats{grid-template-columns:1fr 1fr}input[type=text]{min-width:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div><h1 class="title">Team Matchup Rankings</h1><p class="subtitle">Top 10 teams by <b>Win + Tie rate</b> and by <b>Win rate</b>. Ties are counted as real results and every matchup template is shown with its result counts.</p></div>
+  </div>
+  <div class="toolbar">
+    <button class="tab active" id="btnCombined">Top 10 · Win + Tie</button>
+    <button class="tab" id="btnWin">Top 10 · Win Rate</button>
+    <input id="search" type="text" placeholder="Search team, animal, weapon, or template…" />
+    <div class="filter-panel">
+      <div class="filter-row">
+        <select id="logicFilter" title="How multiple matchup filters combine">
+          <option value="all">Match ALL filters</option>
+          <option value="any">Match ANY filter</option>
+        </select>
+        <button class="tab" id="addFilter">+ Add matchup filter</button>
+        <button class="tab" id="clearFilters">Clear filters</button>
+      </div>
+      <div id="matchFilters"></div>
+    </div>
+    <span class="filter-help">Add multiple conditions, e.g. <b>Beat A</b> + <b>Beat B</b> + <b>Tie L</b>.</span>
+    <label class="file-label">Load full JSON<input id="file" type="file" accept=".json,application/json"></label>
+  </div>
+  <div class="notice" id="notice"></div>
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"></div>
+  <footer>Ranking formulas: (wins + ties) / total matches · wins / total matches. Ties are never discarded.</footer>
+</div>
+<script>
+const EMBEDDED_DATA = [{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FNFCUS"],"weaponNames":["Great Sword","Vampiric Staff","Conduit Claw"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":1}},"totalWins":4,"totalLosses":13,"totalTies":6,"winRate":17.391304347826086,"tieRate":26.08695652173913,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":0,"ties":1},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":0,"ties":1},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":0,"losses":1,"ties":0},{"template":"Hybrid Double Rstaff","wins":0,"losses":1,"ties":0},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":0,"ties":1}]},{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FNFCUQ"],"weaponNames":["Great Sword","Vampiric Staff","Briar-Heart Staff [0]"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":2}},"totalWins":5,"totalLosses":15,"totalTies":3,"winRate":21.73913043478261,"tieRate":13.043478260869565,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":1,"ties":0},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":1,"ties":0},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":1,"losses":0,"ties":0},{"template":"Hybrid Double Rstaff","wins":0,"losses":1,"ties":0},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":1,"ties":0}]},{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FNFCUO"],"weaponNames":["Great Sword","Vampiric Staff","Defender's Aegis [5]"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":3}},"totalWins":4,"totalLosses":15,"totalTies":4,"winRate":17.391304347826086,"tieRate":17.391304347826086,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":1,"ties":0},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":0,"ties":1},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":0,"losses":1,"ties":0},{"template":"Hybrid Double Rstaff","wins":0,"losses":1,"ties":0},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":1,"ties":0}]},{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FN2JEI"],"weaponNames":["Great Sword","Vampiric Staff","Defender's Aegis"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":4}},"totalWins":4,"totalLosses":14,"totalTies":5,"winRate":17.391304347826086,"tieRate":21.73913043478261,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":1,"ties":0},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":0,"ties":1},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":0,"losses":0,"ties":1},{"template":"Hybrid Double Rstaff","wins":0,"losses":1,"ties":0},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":1,"ties":0}]},{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FMTO0X"],"weaponNames":["Great Sword","Vampiric Staff","Decent Conduit Claw"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":5}},"totalWins":4,"totalLosses":14,"totalTies":5,"winRate":17.391304347826086,"tieRate":21.73913043478261,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":1,"ties":0},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":0,"ties":1},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":0,"losses":1,"ties":0},{"template":"Hybrid Double Rstaff","wins":0,"losses":0,"ties":1},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":1,"ties":0}]},{"combination":{"animals":["spider","deer","lion"],"weapons":["FNFCUM","FNFQU4","FMR8WT"],"weaponNames":["Great Sword","Vampiric Staff","Briar-Heart Staff"],"_meta":{"formation":"Holy Trinity","roles":["attacker","healer","tank"],"totalGenerated":6}},"totalWins":4,"totalLosses":15,"totalTies":4,"winRate":17.391304347826086,"tieRate":17.391304347826086,"templateResults":[{"template":"Bow-Crune","wins":0,"losses":1,"ties":0},{"template":"Cclaw-Shield-Crune","wins":0,"losses":0,"ties":1},{"template":"Crune Pshield","wins":0,"losses":1,"ties":0},{"template":"Double Ffish Disruption","wins":0,"losses":1,"ties":0},{"template":"Double-Ffish-Scepter","wins":1,"losses":0,"ties":0},{"template":"Double Scythe Crune","wins":0,"losses":1,"ties":0},{"template":"DS Shield (WP tank)","wins":1,"losses":0,"ties":0},{"template":"Estaff-Scythe Blitz","wins":1,"losses":0,"ties":0},{"template":"Estaff Gem-Crune","wins":0,"losses":0,"ties":1},{"template":"Ffish Discharge Disruption","wins":0,"losses":0,"ties":1},{"template":"Pstall Disruption","wins":0,"losses":1,"ties":0},{"template":"Hybrid Double Rstaff","wins":0,"losses":1,"ties":0},{"template":"Hstaff-Scepter-Stall","wins":0,"losses":1,"ties":0},{"template":"Pstaff-Rstall","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Res","wins":0,"losses":1,"ties":0},{"template":"Pstaff Meta Discharge","wins":0,"losses":1,"ties":0},{"template":"Rstaff-Pstaff-Mag","wins":0,"losses":1,"ties":0},{"template":"New Shield Crune Stall","wins":0,"losses":1,"ties":0},{"template":"Spider_Crune","wins":0,"losses":0,"ties":1},{"template":"Triple-Gem-Blitz","wins":1,"losses":0,"ties":0},{"template":"Wand-Crune","wins":0,"losses":1,"ties":0},{"template":"Wand Crune Sstaff","wins":0,"losses":1,"ties":0},{"template":"Wbow-Shield-Crune","wins":0,"losses":1,"ties":0}]}];
+let data = [];
+let loadedFull = false;
+let dataSource = 'test_results.json';
+let mode = 'combined';
+let query = '';
+let logicFilter = 'all';
+let matchupFilters = [];
+
+const $ = id => document.getElementById(id);
+function total(t){ return (t.totalWins||0)+(t.totalLosses||0)+(t.totalTies||0); }
+function combinedRate(t){ const n=total(t); return n ? ((t.totalWins||0)+(t.totalTies||0))/n*100 : 0; }
+function winRate(t){ const n=total(t); return n ? (t.totalWins||0)/n*100 : 0; }
+function teamName(t){ return (t.combination?.weaponNames||[]).join(' / ') || 'Unnamed team'; }
+function teamCodes(t){ return (t.combination?.weapons||[]).join(' • '); }
+function animals(t){ return (t.combination?.animals||[]).join(' • '); }
+function allText(t){ return [teamName(t),teamCodes(t),animals(t),...(t.templateResults||[]).map(x=>x.template)].join(' ').toLowerCase(); }
+function filterMatches(t, f){
+  if(!f.template || !f.result) return true;
+  const row=(t.templateResults||[]).find(x=>x.template===f.template);
+  return !!row && (row[f.result]||0)>0;
+}
+function matchesAllFilters(t){
+  if(!matchupFilters.length) return true;
+  return logicFilter==='all' ? matchupFilters.every(f=>filterMatches(t,f)) : matchupFilters.some(f=>filterMatches(t,f));
+}
+function templateNames(){
+  return [...new Set(data.flatMap(t=>(t.templateResults||[]).map(x=>x.template)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+}
+function renderMatchFilters(){
+  const names=templateNames();
+  const box=$('matchFilters');
+  if(!matchupFilters.length){ box.innerHTML='<div class="empty">No matchup filters. The leaderboard includes every team.</div>'; return; }
+  const opts=names.map(n=>`<option value="${escapeHtml(n).replace(/"/g,'&quot;')}">${escapeHtml(n)}</option>`).join('');
+  box.innerHTML=matchupFilters.map((f,i)=>`<div class="match-filter-row">
+    <select data-i="${i}" data-field="result">
+      <option value="wins" ${f.result==='wins'?'selected':''}>Beat</option>
+      <option value="ties" ${f.result==='ties'?'selected':''}>Tie with</option>
+      <option value="losses" ${f.result==='losses'?'selected':''}>Lose to</option>
+    </select>
+    <select data-i="${i}" data-field="template">
+      <option value="">Choose template…</option>${opts}
+    </select>
+    <button class="tab" data-remove="${i}" title="Remove this filter">✕</button>
+  </div>`).join('');
+  matchupFilters.forEach((f,i)=>{ const el=box.querySelector(`select[data-i="${i}"][data-field="template"]`); if(el) el.value=f.template||''; });
+  box.querySelectorAll('select').forEach(el=>el.onchange=()=>{ const i=Number(el.dataset.i); matchupFilters[i][el.dataset.field]=el.value; render(); });
+  box.querySelectorAll('button[data-remove]').forEach(btn=>btn.onclick=()=>{ matchupFilters.splice(Number(btn.dataset.remove),1); renderMatchFilters(); render(); });
+}
+
+function resultList(t,key){ return (t.templateResults||[]).filter(x=>(x[key]||0)>0).sort((a,b)=>(b[key]-a[key])||a.template.localeCompare(b.template)); }
+function pct(n){ return n.toFixed(2)+'%'; }
+function card(t,i){
+  const wins=resultList(t,'wins'), losses=resultList(t,'losses'), ties=resultList(t,'ties');
+  const cr=combinedRate(t), wr=winRate(t), n=total(t);
+  const rows=(arr)=>arr.length?arr.map(x=>`<li><span>${escapeHtml(x.template)}</span><span class="count">×${x[mode==='combined'?'wins':'wins']||0}</span></li>`).join(''):'<li class="empty">None</li>';
+  const matchRows=(arr,key)=>arr.length?arr.map(x=>`<li><span>${escapeHtml(x.template)}</span><span class="count">×${x[key]||0}</span></li>`).join(''):'<li class="empty">None</li>';
+  return `<article class="card"><div class="card-head"><div class="rank">#${i+1}</div><div class="team"><h2>${escapeHtml(teamName(t))}</h2><div class="meta"><span class="pill">${escapeHtml(animals(t)||'No animals')}</span><span class="pill">Generated #${escapeHtml(String(t.combination?._meta?.totalGenerated??'—'))}</span><span class="pill">${n} matches</span></div><div class="meta" style="margin-top:6px"><span>${escapeHtml(teamCodes(t))}</span></div></div></div><div class="metrics"><div class="metric"><div class="v g">${t.totalWins||0}</div><div class="k">Wins</div></div><div class="metric"><div class="v y">${t.totalTies||0}</div><div class="k">Ties</div></div><div class="metric"><div class="v r">${t.totalLosses||0}</div><div class="k">Losses</div></div><div class="metric"><div class="v">${pct(cr)}</div><div class="k">Win + Tie</div></div><div class="metric"><div class="v">${pct(wr)}</div><div class="k">Win Rate</div></div></div><div class="details"><details><summary>Show template matchups</summary><div class="match-cols"><div class="matchbox"><h3 class="g">Won against · ${wins.length}</h3><ul>${matchRows(wins,'wins')}</ul></div><div class="matchbox"><h3 class="y">Tied against · ${ties.length}</h3><ul>${matchRows(ties,'ties')}</ul></div><div class="matchbox"><h3 class="r">Lost against · ${losses.length}</h3><ul>${matchRows(losses,'losses')}</ul></div></div></details></div></article>`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function render(){
+  const filtered=data.filter(t=>(!query||allText(t).includes(query.toLowerCase())) && matchesAllFilters(t));
+  filtered.sort((a,b)=>{const A=mode==='combined'?combinedRate(a):winRate(a), B=mode==='combined'?combinedRate(b):winRate(b); return (B-A)||(total(b)-total(a))||((b.totalWins||0)-(a.totalWins||0))||teamName(a).localeCompare(teamName(b));});
+  const top=filtered.slice(0,10);
+  $('grid').innerHTML=top.length?top.map(card).join(''):'<div class="notice">No matching teams.</div>';
+  const totalTeams=data.length, withTies=data.filter(t=>(t.totalTies||0)>0).length, matches=data.reduce((s,t)=>s+total(t),0);
+  $('stats').innerHTML=`<div class="stat"><div class="n">${totalTeams}</div><div class="l">Teams loaded</div></div><div class="stat"><div class="n">${withTies}</div><div class="l">Teams with at least one tie</div></div><div class="stat"><div class="n">${matches.toLocaleString()}</div><div class="l">Recorded team matches</div></div><div class="stat"><div class="n">${top.length}</div><div class="l">Teams shown</div></div>`;
+  $('notice').innerHTML=loadedFull?`<strong>Database:</strong> ${escapeHtml(dataSource)} · Rankings are calculated from the loaded file.`:`<strong>Database:</strong> ${escapeHtml(dataSource)}`;
+}
+$('btnCombined').onclick=()=>{mode='combined';$('btnCombined').classList.add('active');$('btnWin').classList.remove('active');render();};
+$('btnWin').onclick=()=>{mode='win';$('btnWin').classList.add('active');$('btnCombined').classList.remove('active');render();};
+$('search').oninput=e=>{query=e.target.value.trim();render();};
+$('logicFilter').onchange=e=>{logicFilter=e.target.value;render();};
+$('addFilter').onclick=()=>{matchupFilters.push({result:'wins',template:''});renderMatchFilters();};
+$('clearFilters').onclick=()=>{matchupFilters=[];renderMatchFilters();render();};
+$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const parsed=JSON.parse(await f.text());if(!Array.isArray(parsed))throw new Error('JSON root must be an array.');data=parsed;loadedFull=true;dataSource=f.name;matchupFilters=[];renderMatchFilters();render();}catch(err){alert('Could not load JSON: '+err.message);}};
+async function loadDatabase(){
+  try{
+    const res=await fetch('test_results.json',{cache:'no-store'});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const parsed=await res.json();
+    if(!Array.isArray(parsed)) throw new Error('JSON root must be an array.');
+    data=parsed;
+    loadedFull=true;
+    dataSource='test_results.json';
+    matchupFilters=[];
+    renderMatchFilters();
+    render();
+  }catch(err){
+    data=[...EMBEDDED_DATA];
+    loadedFull=false;
+    matchupFilters=[];
+    renderMatchFilters();
+    dataSource='embedded fallback (test_results.json could not be loaded)';
+    render();
+    console.warn('Could not load test_results.json:',err);
+  }
+}
+renderMatchFilters();
+loadDatabase();
+</script>
+</body>
+</html>

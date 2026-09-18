@@ -1,0 +1,22 @@
+{
+  "name": "owo-neon-automator",
+  "version": "1.0.0",
+  "description": "Discord selfbot to automate OwO team testing with NeonUtil",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "parse-weapons": "node src/parseWeapons.js",
+    "register-weapons": "node src/registerWeapons.js",
+    "register-new": "node src/registerNewWeapons.js",
+    "test-teams": "node src/neonutilTester.js",
+    "quick-test": "node src/quickTest.js"
+  },
+  "keywords": ["discord", "selfbot", "owo", "neonutil"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js-selfbot-v13": "^3.4.1",
+    "dotenv": "^16.4.5"
+  }
+}
