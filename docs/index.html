@@ -61,7 +61,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@medi
 
     <div class="filter-panel">
       <div class="filter-row">
-        <button class="tab" id="advancedToggle">⚙️ Advanced Filters</button>
+        <button class="tab" id="advancedToggle">⚙️ Hide Filters</button>
         <select id="logicFilter" title="How multiple matchup filters combine">
           <option value="all">Match ALL filters</option>
           <option value="any">Match ANY filter</option>
@@ -70,7 +70,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@medi
         <button class="tab" id="clearFilters">Clear All</button>
       </div>
       
-      <div id="advancedFilters" style="display:none">
+      <div id="advancedFilters" style="display:block">
         <div class="advanced-row">
           <div class="input-group">
             <label>Min Win Rate (%)</label>
@@ -313,7 +313,9 @@ $('limitResults').onchange=e=>{limit=e.target.value;render();};
 
 $('advancedToggle').onclick=()=>{
   const panel=$('advancedFilters');
-  panel.style.display = panel.style.display==='none'?'block':'none';
+  const isHidden = panel.style.display==='none';
+  panel.style.display = isHidden?'block':'none';
+  $('advancedToggle').textContent = isHidden ? '⚙️ Hide Filters' : '⚙️ Show Filters';
 };
 
 // Advanced filter inputs
