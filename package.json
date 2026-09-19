@@ -10,7 +10,9 @@
     "register-weapons": "node src/registerWeapons.js",
     "register-new": "node src/registerNewWeapons.js",
     "test-teams": "node src/neonutilTester.js",
-    "quick-test": "node src/quickTest.js"
+    "quick-test": "node src/quickTest.js",
+    "optimize": "node src/teamOptimizer.js",
+    "auto-optimize": "node src/autoOptimize.js"
   },
   "keywords": ["discord", "selfbot", "owo", "neonutil"],
   "author": "",

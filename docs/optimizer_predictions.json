@@ -1,0 +1,227 @@
+{
+  "generatedAt": "2026-09-19T18:51:26.366Z",
+  "totalTeamsTested": 4940,
+  "currentBestScore": 73.91304347826086,
+  "predictions": [
+    {
+      "rank": 1,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "deer",
+        "squid"
+      ],
+      "weaponCodes": [
+        "FNFQU4",
+        "FO9991",
+        "FNFCUM"
+      ],
+      "weaponNames": [
+        "Vampiric Staff",
+        "Energy Staff",
+        "Great Sword"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 29.12,
+      "confidence": "High"
+    },
+    {
+      "rank": 2,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "squid",
+        "lion"
+      ],
+      "weaponCodes": [
+        "FO998Y",
+        "FO49TC",
+        "FNFCUM"
+      ],
+      "weaponNames": [
+        "Vanguard's Banner",
+        "Defender's Aegis",
+        "Great Sword"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 28.43,
+      "confidence": "High"
+    },
+    {
+      "rank": 3,
+      "tier": "Uncommon",
+      "animals": [
+        "deer",
+        "gorilla",
+        "owl"
+      ],
+      "weaponCodes": [
+        "FNPEK8",
+        "FNFCUM",
+        "FJMG28"
+      ],
+      "weaponNames": [
+        "Empowered Staff of Purity",
+        "Great Sword",
+        "Resurrection Staff"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 28.24,
+      "confidence": "High"
+    },
+    {
+      "rank": 4,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "gorilla",
+        "fox"
+      ],
+      "weaponCodes": [
+        "FO998Y",
+        "FNFQU4",
+        "FNFCUP"
+      ],
+      "weaponNames": [
+        "Vanguard's Banner",
+        "Vampiric Staff",
+        "Staff of Corruption"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.81,
+      "confidence": "High"
+    },
+    {
+      "rank": 5,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "gorilla",
+        "lion"
+      ],
+      "weaponCodes": [
+        "FNPEK8",
+        "FJMG28",
+        "FNFCUP"
+      ],
+      "weaponNames": [
+        "Empowered Staff of Purity",
+        "Resurrection Staff",
+        "Staff of Corruption"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.39,
+      "confidence": "High"
+    },
+    {
+      "rank": 6,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "lion",
+        "fox"
+      ],
+      "weaponCodes": [
+        "FNPE1R",
+        "FNFQU4",
+        "FO49TC"
+      ],
+      "weaponNames": [
+        "Orb of Potency",
+        "Vampiric Staff",
+        "Defender's Aegis"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 26.76,
+      "confidence": "High"
+    },
+    {
+      "rank": 7,
+      "tier": "Uncommon",
+      "animals": [
+        "deer",
+        "lion",
+        "gorilla"
+      ],
+      "weaponCodes": [
+        "FO9991",
+        "FNPE1R",
+        "FNFQU4"
+      ],
+      "weaponNames": [
+        "Energy Staff",
+        "Orb of Potency",
+        "Vampiric Staff"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 26.64,
+      "confidence": "Medium"
+    },
+    {
+      "rank": 8,
+      "tier": "Uncommon",
+      "animals": [
+        "gorilla",
+        "deer",
+        "lion"
+      ],
+      "weaponCodes": [
+        "FNFCUM",
+        "FO998Y",
+        "FO9991"
+      ],
+      "weaponNames": [
+        "Great Sword",
+        "Vanguard's Banner",
+        "Energy Staff"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 26.63,
+      "confidence": "Medium"
+    },
+    {
+      "rank": 9,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "spider",
+        "deer"
+      ],
+      "weaponCodes": [
+        "FNFCUN",
+        "FO9991",
+        "FNFCUM"
+      ],
+      "weaponNames": [
+        "Spirit Staff",
+        "Energy Staff",
+        "Great Sword"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 26.05,
+      "confidence": "Medium"
+    },
+    {
+      "rank": 10,
+      "tier": "Uncommon",
+      "animals": [
+        "owl",
+        "lion",
+        "deer"
+      ],
+      "weaponCodes": [
+        "FJMG28",
+        "FO998Y",
+        "FO49TC"
+      ],
+      "weaponNames": [
+        "Resurrection Staff",
+        "Vanguard's Banner",
+        "Defender's Aegis"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 25.87,
+      "confidence": "Medium"
+    }
+  ]
+}

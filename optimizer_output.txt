@@ -1,0 +1,253 @@
+
+> owo-neon-automator@1.0.0 optimize
+> node src/teamOptimizer.js
+
+🚀 OwO Team Optimizer - Finding the Ultimate Team
+============================================================
+
+📊 Loaded 4,910 tested teams
+   Using 98 weapons for predictions
+
+🥇 Current Best Team: 73.91% win+tie
+   Animals: lion, camel, deer
+   Weapons: Defender's Aegis [44], Decent Empowered Healing Staff, Empowered Arcane Scepter
+
+🔬 ALGORITHM 1: Feature Importance Analysis
+============================================================
+
+📊 Top Performing Animals:
+  1. owl          - Avg: 24.34% (1027 teams, 1391W/4350T)
+  2. gorilla      - Avg: 21.16% (1306 teams, 1824W/4522T)
+  3. squid        - Avg: 18.73% (492 teams, 643W/1475T)
+  4. fox          - Avg: 17.42% (417 teams, 625W/1042T)
+  5. fish         - Avg: 16.76% (407 teams, 782W/785T)
+  6. deer         - Avg: 16.41% (3386 teams, 6948W/5808T)
+  7. lion         - Avg: 16.36% (3168 teams, 6623W/5276T)
+  8. spider       - Avg: 14.67% (2792 teams, 6237W/3166T)
+  9. shrimp       - Avg: 14.51% (427 teams, 412W/1010T)
+  10. camel        - Avg: 14.26% (471 teams, 494W/1049T)
+
+⚔️  Top Performing Weapons:
+  1. Empowered Arcane Scepter       - Avg: 26.67% (30 teams)
+  2. Energy Staff                   - Avg: 26.64% (135 teams)
+  3. Great Sword                    - Avg: 25.89% (410 teams)
+  4. Vampiric Staff                 - Avg: 24.48% (540 teams)
+  5. Empowered Leeching Scythe [157] - Avg: 22.20% (68 teams)
+  6. Defender's Aegis               - Avg: 20.96% (1512 teams)
+  7. Pristine Vampiric Staff        - Avg: 20.81% (170 teams)
+  8. Glacial Axe                    - Avg: 20.25% (82 teams)
+  9. Orb of Potency                 - Avg: 20.24% (979 teams)
+  10. Flame Staff                    - Avg: 20.04% (112 teams)
+  11. Fine Leeching Scythe           - Avg: 19.32% (62 teams)
+  12. Empowered Staff of Purity      - Avg: 19.27% (255 teams)
+  13. Empowered Bleeding Gaze [0]    - Avg: 19.27% (51 teams)
+  14. Defender's Aegis [44]          - Avg: 19.10% (92 teams)
+  15. Decent Glacial Axe             - Avg: 19.00% (46 teams)
+
+🎯 Top Performing Formations:
+  1. EXPLOIT: Kamikaze Shield (Owl) - Avg: 54.55% (1 teams)
+  2. EXPLOIT: Triple Sac Hybrid     - Avg: 34.78% (1 teams)
+  3. EXPLOIT: Anti-Sustain (Fox)    - Avg: 34.78% (1 teams)
+  4. EXPLOIT: Double Scythe Blitz (Spider) - Avg: 30.43% (1 teams)
+  5. Crune Meta                     - Avg: 27.87% (258 teams)
+
+🤝 Best Animal Synergies:
+  1. gorilla+owl               - Avg: 27.42% (554 teams)
+  2. lion+owl                  - Avg: 26.29% (213 teams)
+  3. deer+owl                  - Avg: 25.39% (459 teams)
+  4. owl+squid                 - Avg: 24.54% (114 teams)
+  5. gorilla+lion              - Avg: 23.89% (286 teams)
+  6. fox+owl                   - Avg: 23.70% (102 teams)
+  7. lion+squid                - Avg: 23.27% (157 teams)
+  8. deer+gorilla              - Avg: 22.86% (553 teams)
+  9. fish+owl                  - Avg: 22.83% (108 teams)
+  10. owl+shrimp                - Avg: 22.04% (91 teams)
+
+⚡ Best Weapon Synergies:
+  1. Arcane Scepter + Spirit Staff                 - Avg: 40.58% (6 teams)
+  2. Defender's Aegis + Empowered Arcane Scepter   - Avg: 40.43% (10 teams)
+  3. Defender's Aegis + Energy Staff               - Avg: 40.06% (28 teams)
+  4. Empowered Staff of Purity + Vampiric Staff    - Avg: 38.51% (7 teams)
+  5. Great Sword + Pristine Vampiric Staff         - Avg: 37.83% (10 teams)
+  6. Defender's Aegis + Empowered Bleeding Gaze [0 - Avg: 36.41% (8 teams)
+  7. Defender's Aegis + Flame Staff                - Avg: 36.29% (26 teams)
+  8. Great Sword + Vampiric Staff                  - Avg: 35.74% (41 teams)
+  9. Energy Staff + Vampiric Staff                 - Avg: 35.14% (12 teams)
+  10. Foul Fish + Staff of Purity                   - Avg: 34.78% (5 teams)
+
+🎯 ALGORITHM 3: Template Coverage Analysis
+============================================================
+
+📋 Total unique templates: 23
+
+🔥 Hardest Templates (least teams can beat/tie):
+  1. Bow-Crune                      - 0 teams win, 23 tie
+  2. Double Scythe Crune            - 9 teams win, 17 tie
+  3. Wbow-Shield-Crune              - 2 teams win, 37 tie
+  4. Cclaw-Shield-Crune             - 0 teams win, 136 tie
+  5. Wand Crune Sstaff              - 3 teams win, 136 tie
+  6. Wand-Crune                     - 1 teams win, 233 tie
+  7. Rstaff-Pstaff-Mag              - 6 teams win, 291 tie
+  8. Pstall Disruption              - 310 teams win, 57 tie
+  9. Spider_Crune                   - 2 teams win, 427 tie
+  10. Estaff Gem-Crune               - 0 teams win, 462 tie
+
+🏆 Best Template Coverage:
+  1. 73.9% coverage (4W + 13T) - fish/deer/lion
+  2. 60.9% coverage (5W + 9T) - spider/deer/lion
+  3. 65.2% coverage (4W + 11T) - fish/owl/gorilla
+  4. 52.2% coverage (6W + 6T) - spider/deer/lion
+  5. 60.9% coverage (4W + 10T) - spider/deer/lion
+  6. 52.2% coverage (6W + 6T) - spider/deer/lion
+  7. 60.9% coverage (4W + 10T) - owl/gorilla/deer
+  8. 60.9% coverage (4W + 10T) - owl/gorilla/deer
+  9. 60.9% coverage (4W + 10T) - owl/gorilla/deer
+  10. 60.9% coverage (4W + 10T) - owl/gorilla/deer
+
+🧬 ALGORITHM 2: Genetic Algorithm (Breeding Top Performers)
+============================================================
+
+📈 Using top 491 teams (10.0%) as genetic pool
+   Best parent: 73.91% win+tie rate
+   Avg parent: 43.88% win+tie rate
+
+🔬 Breeding 100 offspring from successful traits...
+✅ Generated 65 viable offspring
+
+
+🎯 TOP 10 PREDICTED OPTIMAL TEAMS
+============================================================
+(These teams have never been tested but are predicted to perform well)
+
+1. PREDICTED SCORE: 26.63%
+   Animals: owl, deer, gorilla
+   Weapons: Spirit Staff, Orb of Potency, Vampiric Staff
+   Formation: Crune Meta
+   Score Breakdown:
+     - Animal Quality: 20.63%
+     - Weapon Quality: 19.47%
+     - Formation: 27.87%
+     - Synergy: 25.22%
+     - Diversity: 100.00%
+     - Historical: 23.76%
+
+2. PREDICTED SCORE: 25.94%
+   Animals: gorilla, owl, deer
+   Weapons: Great Sword, Defender's Aegis, Empowered Staff of Purity
+   Formation: Short Stall
+   Score Breakdown:
+     - Animal Quality: 20.63%
+     - Weapon Quality: 22.04%
+     - Formation: 18.99%
+     - Synergy: 25.22%
+     - Diversity: 100.00%
+     - Historical: 23.76%
+
+3. PREDICTED SCORE: 25.83%
+   Animals: gorilla, owl, camel
+   Weapons: Spirit Staff, Energy Staff, Empowered Staff of Purity
+   Formation: Crune Meta
+   Score Breakdown:
+     - Animal Quality: 19.92%
+     - Weapon Quality: 19.87%
+     - Formation: 27.87%
+     - Synergy: 21.41%
+     - Diversity: 100.00%
+     - Historical: 24.19%
+
+4. PREDICTED SCORE: 25.82%
+   Animals: lion, gorilla, owl
+   Weapons: Vanguard's Banner, Resurrection Staff, Energy Staff
+   Formation: Short Stall
+   Score Breakdown:
+     - Animal Quality: 20.62%
+     - Weapon Quality: 20.41%
+     - Formation: 18.99%
+     - Synergy: 25.87%
+     - Diversity: 100.00%
+     - Historical: 25.44%
+
+5. PREDICTED SCORE: 25.73%
+   Animals: spider, gorilla, owl
+   Weapons: Orb of Potency, Pristine Vampiric Staff, Vanguard's Banner
+   Formation: Crune Meta
+   Score Breakdown:
+     - Animal Quality: 20.05%
+     - Weapon Quality: 19.94%
+     - Formation: 27.87%
+     - Synergy: 20.78%
+     - Diversity: 100.00%
+     - Historical: 23.91%
+
+6. PREDICTED SCORE: 25.60%
+   Animals: deer, lion, owl
+   Weapons: Great Sword, Empowered Staff of Purity, Orb of Potency
+   Formation: Crune Meta
+   Score Breakdown:
+     - Animal Quality: 19.03%
+     - Weapon Quality: 21.80%
+     - Formation: 27.87%
+     - Synergy: 22.37%
+     - Diversity: 100.00%
+     - Historical: 17.40%
+
+7. PREDICTED SCORE: 25.57%
+   Animals: deer, owl, gorilla
+   Weapons: Energy Staff, Resurrection Staff, Empowered Staff of Purity
+   Formation: Short Stall
+   Score Breakdown:
+     - Animal Quality: 20.63%
+     - Weapon Quality: 20.57%
+     - Formation: 18.99%
+     - Synergy: 25.22%
+     - Diversity: 100.00%
+     - Historical: 23.76%
+
+8. PREDICTED SCORE: 25.47%
+   Animals: deer, owl, gorilla
+   Weapons: Great Sword, Vanguard's Banner, Resurrection Staff
+   Formation: Short Stall
+   Score Breakdown:
+     - Animal Quality: 20.63%
+     - Weapon Quality: 20.16%
+     - Formation: 18.99%
+     - Synergy: 25.22%
+     - Diversity: 100.00%
+     - Historical: 23.76%
+
+9. PREDICTED SCORE: 25.47%
+   Animals: gorilla, squid, owl
+   Weapons: Great Sword, Pristine Vampiric Staff, Vanguard's Banner
+   Formation: Holy Trinity
+   Score Breakdown:
+     - Animal Quality: 21.41%
+     - Weapon Quality: 21.83%
+     - Formation: 15.46%
+     - Synergy: 24.02%
+     - Diversity: 100.00%
+     - Historical: 25.33%
+
+10. PREDICTED SCORE: 25.41%
+   Animals: gorilla, lion, owl
+   Weapons: Great Sword, Defender's Aegis, Resurrection Staff
+   Formation: Holy Trinity
+   Score Breakdown:
+     - Animal Quality: 20.62%
+     - Weapon Quality: 20.88%
+     - Formation: 15.46%
+     - Synergy: 25.87%
+     - Diversity: 100.00%
+     - Historical: 25.44%
+
+
+💾 Results saved to optimizer_results.json
+
+
+📝 RECOMMENDATIONS:
+============================================================
+1. Test the top 10 predicted teams immediately
+2. Focus on animals: owl, gorilla, squid, fox, fish
+3. Prioritize formations: EXPLOIT: Kamikaze Shield (Owl), EXPLOIT: Triple Sac Hybrid, EXPLOIT: Anti-Sustain (Fox)
+4. If predicted teams score 79%+, the algorithm works!
+5. Continue testing more teams to improve predictions
+

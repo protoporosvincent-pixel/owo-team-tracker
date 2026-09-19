@@ -36,6 +36,16 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@medi
 .compare-body{padding:24px}.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px}.compare-team-card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:12px;padding:16px}.compare-team-card h3{margin:0 0 12px;font-size:16px;color:var(--accent)}.compare-team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.compare-stat{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center}.compare-stat .v{font-weight:850;font-size:16px}.compare-stat .k{font-size:10px;color:var(--muted);margin-top:2px}
 .compare-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}.compare-section h3{margin:0 0 16px;font-size:18px;font-weight:850}.compare-table{display:grid;gap:12px}.compare-table-row{background:#0d1117;border:1px solid var(--border);border-radius:10px;padding:12px}.compare-table-row h4{margin:0 0 8px;font-size:14px;color:var(--text)}.compare-table-teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}.compare-table-cell{padding:8px;background:#21262d;border-radius:6px;font-size:12px}.compare-table-cell.win{background:rgba(63,185,80,.15);color:var(--good)}.compare-table-cell.tie{background:rgba(210,153,34,.15);color:var(--warn)}.compare-table-cell.loss{background:rgba(248,81,73,.15);color:var(--bad)}.compare-table-cell .icon{font-weight:900;margin-right:4px}
 @media(max-width:768px){.compare-content{max-height:95vh}.compare-grid{grid-template-columns:1fr}.compare-floating{bottom:10px;right:10px}.compare-btn{width:50px;height:50px;font-size:20px}}
+
+/* AI Predictions Sidebar */
+.predictions-toggle{position:fixed;top:50%;right:0;transform:translateY(-50%);background:linear-gradient(135deg,#9945ff,#7b2cbf);color:#fff;padding:12px 8px;border-radius:12px 0 0 12px;cursor:pointer;font-weight:700;font-size:14px;writing-mode:vertical-rl;text-orientation:mixed;box-shadow:-4px 0 12px rgba(153,69,255,.4);transition:all .3s;z-index:999}.predictions-toggle:hover{right:5px;box-shadow:-8px 0 20px rgba(153,69,255,.6)}.predictions-toggle .badge{background:var(--warn);color:#000;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:4px;font-weight:900}
+.predictions-sidebar{position:fixed;top:0;right:-420px;width:400px;height:100vh;background:var(--panel);border-left:1px solid var(--border);box-shadow:-8px 0 24px rgba(0,0,0,.4);transition:right .4s;z-index:998;overflow-y:auto}.predictions-sidebar.open{right:0}.predictions-header{padding:20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel);z-index:10}.predictions-header h2{margin:0 0 8px;font-size:20px;font-weight:850;display:flex;align-items:center;gap:8px}.predictions-header .subtitle{font-size:12px;color:var(--muted)}.predictions-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#21262d;border:1px solid var(--border);color:var(--text);cursor:pointer;font-size:18px;display:grid;place-items:center}.predictions-close:hover{background:var(--bad);color:#fff}
+.predictions-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 20px 16px;margin-bottom:8px;border-bottom:1px solid var(--border)}.pred-stat{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}.pred-stat .v{font-size:18px;font-weight:850;color:var(--accent)}.pred-stat .k{font-size:10px;color:var(--muted);margin-top:4px}
+.predictions-list{padding:12px 20px 40px}.pred-card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}.pred-card:hover{transform:translateX(-4px);box-shadow:-4px 4px 12px rgba(153,69,255,.3)}
+.pred-tier-badge{position:absolute;top:8px;right:8px;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.5px}.tier-fabled{background:linear-gradient(135deg,#ff6b9d,#c44569);color:#fff;box-shadow:0 0 12px rgba(255,107,157,.5)}.tier-legendary{background:linear-gradient(135deg,#ffd700,#ffb700);color:#000;box-shadow:0 0 12px rgba(255,215,0,.5)}.tier-mythical{background:linear-gradient(135deg,#9945ff,#7b2cbf);color:#fff;box-shadow:0 0 12px rgba(153,69,255,.5)}.tier-epic{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}.tier-rare{background:linear-gradient(135deg,#4facfe,#00f2fe);color:#000}.tier-uncommon{background:linear-gradient(135deg,#43e97b,#38f9d7);color:#000}.tier-common{background:linear-gradient(135deg,#ccc,#999);color:#000}
+.pred-rank{font-size:24px;font-weight:900;color:var(--muted);margin-bottom:8px}.pred-score{font-size:16px;font-weight:850;color:var(--accent);margin-bottom:8px}.pred-animals{font-size:13px;color:var(--text);margin-bottom:6px;font-weight:600}.pred-weapons{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.4}.pred-formation{display:inline-block;padding:4px 8px;background:#21262d;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text);margin-top:4px}.pred-confidence{position:absolute;bottom:8px;right:8px;font-size:9px;padding:3px 6px;border-radius:4px;text-transform:uppercase;font-weight:700}.confidence-high{background:rgba(63,185,80,.2);color:var(--good)}.confidence-medium{background:rgba(210,153,34,.2);color:var(--warn)}.confidence-low{background:rgba(248,81,73,.2);color:var(--bad)}
+.pred-weapon-codes{font-size:9px;color:var(--muted);font-family:monospace;margin-top:4px;padding:4px;background:#0d1117;border-radius:4px}
+@media(max-width:768px){.predictions-sidebar{width:100%;right:-100%}.predictions-toggle{display:none}}
 </style>
 </head>
 <body>
@@ -147,6 +157,35 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@medi
       <div class="compare-body" id="compareModalBody"></div>
     </div>
   </div>
+
+  <!-- AI Predictions Sidebar -->
+  <div class="predictions-toggle" id="predictionsToggle">
+    🤖 AI Predictions
+    <span class="badge" id="predictionsBadge">0</span>
+  </div>
+  
+  <div class="predictions-sidebar" id="predictionsSidebar">
+    <div class="predictions-header">
+      <button class="predictions-close" id="predictionsClose">×</button>
+      <h2>🤖 AI Predicted Teams</h2>
+      <div class="subtitle">ML-generated optimal teams ranked by tier</div>
+    </div>
+    <div class="predictions-stats">
+      <div class="pred-stat">
+        <div class="v" id="predCount">0</div>
+        <div class="k">Predictions</div>
+      </div>
+      <div class="pred-stat">
+        <div class="v" id="predBest">--</div>
+        <div class="k">Best Score</div>
+      </div>
+    </div>
+    <div class="predictions-list" id="predictionsList">
+      <div style="color:var(--muted);font-size:13px;text-align:center;padding:20px">
+        Loading predictions...
+      </div>
+    </div>
+  </div>
   
   <footer>
     <p>🏆 Rankings: (wins + ties) / total matches · wins / total matches. Ties are never discarded.</p>
@@ -177,6 +216,10 @@ let weaponFilter = '';
 // Comparison state
 let compareTeams = [];
 const MAX_COMPARE = 5;
+
+// Predictions state
+let predictions = [];
+let hasPredictions = false;
 
 const $ = id => document.getElementById(id);
 
@@ -267,6 +310,10 @@ function card(t,i){
   const isExploit = formation.toLowerCase().includes('exploit') || formation.toLowerCase().includes('stall') || formation.toLowerCase().includes('crune');
   const rankClass = i===0 ? 'gold' : i===1 ? 'silver' : i===2 ? 'bronze' : '';
   
+  // Calculate tiers for win+tie and win rate
+  const winTieTier = getTier(cr);
+  const winTierOnly = getTier(wr);
+  
   const teamId = `${t.combination?.animals?.join('-')}-${t.combination?.weapons?.join('-')}`;
   const isComparing = compareTeams.some(ct => ct.id === teamId);
   const compareDisabled = compareTeams.length >= MAX_COMPARE && !isComparing;
@@ -293,8 +340,14 @@ function card(t,i){
       <div class="metric"><div class="v g">${t.totalWins||0}</div><div class="k">Wins</div></div>
       <div class="metric"><div class="v y">${t.totalTies||0}</div><div class="k">Ties</div></div>
       <div class="metric"><div class="v r">${t.totalLosses||0}</div><div class="k">Losses</div></div>
-      <div class="metric"><div class="v">${pct(cr)}</div><div class="k">Win + Tie</div></div>
-      <div class="metric"><div class="v">${pct(wr)}</div><div class="k">Win Rate</div></div>
+      <div class="metric">
+        <div class="v">${getTierIcon(winTieTier)}${pct(cr)}</div>
+        <div class="k">Win + Tie</div>
+      </div>
+      <div class="metric">
+        <div class="v">${getTierIcon(winTierOnly)}${pct(wr)}</div>
+        <div class="k">Win Rate</div>
+      </div>
     </div>
     <div class="details">
       <details>
@@ -310,6 +363,21 @@ function card(t,i){
 }
 
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+
+function getTier(score) {
+  if (score >= 100) return 'Fabled';
+  if (score >= 95) return 'Legendary';
+  if (score >= 81) return 'Mythical';
+  if (score >= 61) return 'Epic';
+  if (score >= 41) return 'Rare';
+  if (score >= 21) return 'Uncommon';
+  return 'Common';
+}
+
+function getTierIcon(tier) {
+  const tierName = tier.replace(' ', '_');
+  return `<img src="rankings/${tierName}_%28Tier%29.png" alt="${tier}" title="${tier}" style="width:24px;height:24px;vertical-align:middle;margin-right:4px" />`;
+}
 
 function render(){
   const filtered=data.filter(t=>(!query||allText(t).includes(query.toLowerCase())) && matchesAllFilters(t) && matchesAdvancedFilters(t));
@@ -683,9 +751,72 @@ async function loadDatabase(){
 // Auto-refresh every 5 minutes
 setInterval(loadDatabase, 300000);
 
+// PREDICTIONS FUNCTIONS
+async function loadPredictions() {
+  try {
+    const res = await fetch('optimizer_predictions.json', {cache: 'no-store'});
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    predictions = data.predictions || [];
+    hasPredictions = predictions.length > 0;
+    renderPredictions();
+  } catch (err) {
+    console.warn('Could not load predictions:', err);
+    hasPredictions = false;
+    $('predictionsList').innerHTML = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px">No predictions available.<br><br>Run <code>npm run optimize</code> to generate AI predictions.</div>';
+  }
+}
+
+function renderPredictions() {
+  if (!hasPredictions || predictions.length === 0) {
+    $('predictionsList').innerHTML = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px">No predictions available</div>';
+    $('predictionsBadge').textContent = '0';
+    $('predCount').textContent = '0';
+    $('predBest').textContent = '--';
+    return;
+  }
+  
+  $('predictionsBadge').textContent = predictions.length;
+  $('predCount').textContent = predictions.length;
+  $('predBest').textContent = predictions[0] ? predictions[0].predictedScore.toFixed(1) + '%' : '--';
+  
+  const html = predictions.map(pred => {
+    const tierClass = `tier-${pred.tier.toLowerCase()}`;
+    const confClass = `confidence-${pred.confidence.toLowerCase()}`;
+    const tierIcon = getTierIcon(pred.tier);
+    
+    return `
+      <div class="pred-card">
+        <div class="pred-tier-badge ${tierClass}">${tierIcon}${pred.tier}</div>
+        <div class="pred-rank">#${pred.rank}</div>
+        <div class="pred-score">${tierIcon}${pred.predictedScore.toFixed(2)}% predicted</div>
+        <div class="pred-animals">🐾 ${escapeHtml(pred.animals.join(' • '))}</div>
+        <div class="pred-weapons">⚔️ ${escapeHtml(pred.weaponNames.join(' / '))}</div>
+        <div class="pred-weapon-codes">${escapeHtml(pred.weaponCodes.join(' • '))}</div>
+        <div class="pred-formation">${escapeHtml(pred.formation)}</div>
+        <div class="pred-confidence ${confClass}">${pred.confidence}</div>
+      </div>
+    `;
+  }).join('');
+  
+  $('predictionsList').innerHTML = html;
+}
+
+$('predictionsToggle').onclick = () => {
+  $('predictionsSidebar').classList.add('open');
+};
+
+$('predictionsClose').onclick = () => {
+  $('predictionsSidebar').classList.remove('open');
+};
+
 // INIT
 renderMatchFilters();
 loadDatabase();
+loadPredictions();
+
+// Reload predictions every 5 minutes
+setInterval(loadPredictions, 300000);
 </script>
 </body>
 </html>

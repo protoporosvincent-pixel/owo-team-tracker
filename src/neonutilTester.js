@@ -391,6 +391,18 @@ async function runTests() {
               log(`⚠️  GitHub push failed (not critical): ${error.message}`);
             }
           }
+          
+          // Auto-run optimizer every 1000 teams
+          if (teamCount % 1000 === 0) {
+            log(`\n🤖 Running AI optimizer (${teamCount} teams tested)...`);
+            try {
+              const { execSync } = await import('child_process');
+              execSync('npm run auto-optimize', { stdio: 'inherit' });
+              log(`✅ Optimizer completed!`);
+            } catch (error) {
+              log(`⚠️  Optimizer failed (not critical): ${error.message}`);
+            }
+          }
         }
       }
     }

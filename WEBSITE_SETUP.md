@@ -15,7 +15,7 @@ git commit -m "Initial commit"
 ### Step 2: Push to GitHub
 ```bash
 # Create a new repo on GitHub first, then:
-git remote add origin https://github.com/YOUR_USERNAME/owo-team-tracker.git
+git remote add origin https://github.com/protoporosvincent-pixel/owo-team-tracker.git
 git branch -M main
 git push -u origin main
 ```
