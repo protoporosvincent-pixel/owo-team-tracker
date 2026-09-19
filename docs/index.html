@@ -27,6 +27,15 @@ select{min-width:230px;max-width:320px;background:#0d1117;color:var(--text);bord
 footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@media(max-width:950px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.match-cols{grid-template-columns:1fr}.toolbar{position:static}.container{padding:18px 12px 40px}.stats{grid-template-columns:1fr 1fr}input[type=text]{min-width:0;width:100%}}
 .view-controls{display:flex;gap:8px;align-items:center}.limit-control{display:flex;align-items:center;gap:8px}.limit-control label{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}.limit-control select{min-width:120px}
 .btn-export{background:var(--good);color:#fff;border:1px solid var(--good)}.btn-export:hover{background:#2f8f3f}
+.btn-compare{background:#21262d;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s}.btn-compare:hover{background:#2d3643;border-color:var(--accent)}.btn-compare.active{background:var(--accent);color:#07111c;border-color:var(--accent)}
+.compare-floating{position:fixed;bottom:20px;right:20px;z-index:1000;display:flex;flex-direction:column;gap:10px;align-items:flex-end}.compare-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#4a8fd9);border:3px solid var(--bg);color:#fff;font-size:24px;cursor:pointer;box-shadow:0 8px 24px rgba(88,166,255,.4);transition:all .3s;display:grid;place-items:center}.compare-btn:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(88,166,255,.6)}.compare-btn.pulse{animation:comparePulse 1.5s ease infinite}@keyframes comparePulse{0%,100%{box-shadow:0 8px 24px rgba(88,166,255,.4)}50%{box-shadow:0 12px 40px rgba(88,166,255,.8)}}
+.compare-count{position:absolute;top:-5px;right:-5px;width:24px;height:24px;border-radius:50%;background:var(--warn);color:#0c0a02;font-size:12px;font-weight:900;display:grid;place-items:center;border:2px solid var(--bg)}
+.compare-list-btn{padding:10px 16px;background:#21262d;border:1px solid var(--border);border-radius:12px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px}.compare-list-btn:hover{background:#2d3643;border-color:var(--accent)}
+.compare-dropdown{position:absolute;bottom:100%;right:0;margin-bottom:10px;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.4);min-width:300px;max-width:400px;max-height:400px;overflow:auto;padding:8px}.compare-dropdown-item{padding:10px;border-radius:8px;margin-bottom:4px;background:#0d1117;border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px}.compare-dropdown-item:hover{background:#161b22}.compare-dropdown-team{font-size:12px;color:var(--text);flex:1;min-width:0}.compare-dropdown-team strong{display:block;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.compare-dropdown-team span{color:var(--muted);font-size:11px}.compare-dropdown-remove{padding:4px 8px;background:var(--bad);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600}.compare-dropdown-remove:hover{background:#c73030}
+.compare-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}.compare-content{background:var(--panel);border:1px solid var(--border);border-radius:18px;max-width:1200px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}.compare-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.compare-header h2{margin:0;font-size:24px;font-weight:850}.compare-close{width:36px;height:36px;border-radius:50%;background:#21262d;border:1px solid var(--border);color:var(--text);cursor:pointer;font-size:20px;display:grid;place-items:center;transition:all .2s}.compare-close:hover{background:var(--bad);color:#fff;border-color:var(--bad)}
+.compare-body{padding:24px}.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px}.compare-team-card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:12px;padding:16px}.compare-team-card h3{margin:0 0 12px;font-size:16px;color:var(--accent)}.compare-team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.compare-stat{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center}.compare-stat .v{font-weight:850;font-size:16px}.compare-stat .k{font-size:10px;color:var(--muted);margin-top:2px}
+.compare-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}.compare-section h3{margin:0 0 16px;font-size:18px;font-weight:850}.compare-table{display:grid;gap:12px}.compare-table-row{background:#0d1117;border:1px solid var(--border);border-radius:10px;padding:12px}.compare-table-row h4{margin:0 0 8px;font-size:14px;color:var(--text)}.compare-table-teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}.compare-table-cell{padding:8px;background:#21262d;border-radius:6px;font-size:12px}.compare-table-cell.win{background:rgba(63,185,80,.15);color:var(--good)}.compare-table-cell.tie{background:rgba(210,153,34,.15);color:var(--warn)}.compare-table-cell.loss{background:rgba(248,81,73,.15);color:var(--bad)}.compare-table-cell .icon{font-weight:900;margin-right:4px}
+@media(max-width:768px){.compare-content{max-height:95vh}.compare-grid{grid-template-columns:1fr}.compare-floating{bottom:10px;right:10px}.compare-btn{width:50px;height:50px;font-size:20px}}
 </style>
 </head>
 <body>
@@ -114,6 +123,31 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@medi
   <div class="stats" id="stats"></div>
   <div class="grid" id="grid"></div>
   
+  <!-- Floating Compare Controls -->
+  <div class="compare-floating" id="compareFloating" style="display:none">
+    <div style="position:relative">
+      <button class="compare-list-btn" id="compareListBtn">
+        📋 Selected (<span id="compareListCount">0</span>)
+      </button>
+      <div class="compare-dropdown" id="compareDropdown" style="display:none"></div>
+    </div>
+    <button class="compare-btn pulse" id="compareShowBtn" title="Compare Teams">
+      ✨
+      <span class="compare-count" id="compareCount">0</span>
+    </button>
+  </div>
+
+  <!-- Compare Modal -->
+  <div class="compare-modal" id="compareModal" style="display:none">
+    <div class="compare-content">
+      <div class="compare-header">
+        <h2>🔬 Team Comparison</h2>
+        <button class="compare-close" id="compareModalClose">×</button>
+      </div>
+      <div class="compare-body" id="compareModalBody"></div>
+    </div>
+  </div>
+  
   <footer>
     <p>🏆 Rankings: (wins + ties) / total matches · wins / total matches. Ties are never discarded.</p>
     <p style="margin-top:8px">Made with ❤️ for the OwO community · Last updated: <span id="lastUpdated">Loading...</span></p>
@@ -139,6 +173,10 @@ let filterAnimal = '';
 let filterFormation = '';
 let minMatches = 0;
 let weaponFilter = '';
+
+// Comparison state
+let compareTeams = [];
+const MAX_COMPARE = 5;
 
 const $ = id => document.getElementById(id);
 
@@ -229,6 +267,10 @@ function card(t,i){
   const isExploit = formation.toLowerCase().includes('exploit') || formation.toLowerCase().includes('stall') || formation.toLowerCase().includes('crune');
   const rankClass = i===0 ? 'gold' : i===1 ? 'silver' : i===2 ? 'bronze' : '';
   
+  const teamId = `${t.combination?.animals?.join('-')}-${t.combination?.weapons?.join('-')}`;
+  const isComparing = compareTeams.some(ct => ct.id === teamId);
+  const compareDisabled = compareTeams.length >= MAX_COMPARE && !isComparing;
+  
   const matchRows=(arr,key)=>arr.length?arr.map(x=>`<li><span>${escapeHtml(x.template)}</span><span class="count">×${x[key]||0}</span></li>`).join(''):'<li class="empty">None</li>';
   
   return `<article class="card">
@@ -240,6 +282,9 @@ function card(t,i){
           <span class="pill">${escapeHtml(animals(t)||'No animals')}</span>
           <span class="pill ${isExploit?'exploit':'formation'}">${escapeHtml(formation)}</span>
           <span class="pill">${n} matches</span>
+          <button class="btn-compare ${isComparing?'active':''}" data-team-id="${escapeHtml(teamId)}" ${compareDisabled?'disabled':''} onclick="toggleCompare(this, ${i})">
+            ${isComparing?'✓ Comparing':'+ Compare'}
+          </button>
         </div>
         <div class="meta" style="margin-top:6px"><span>${escapeHtml(teamCodes(t))}</span></div>
       </div>
@@ -293,6 +338,221 @@ function render(){
   
   const liveIndicator = loadedFull ? '<span class="pulse"></span>Live data' : 'Fallback data';
   $('notice').innerHTML=`<strong>Database:</strong> ${escapeHtml(dataSource)} · ${liveIndicator} · Auto-refreshes every 5 minutes`;
+  
+  updateCompareUI();
+}
+
+// COMPARISON FUNCTIONS
+function toggleCompare(btn, index) {
+  const filtered=data.filter(t=>(!query||allText(t).includes(query.toLowerCase())) && matchesAllFilters(t) && matchesAdvancedFilters(t));
+  filtered.sort((a,b)=>{
+    const A=mode==='combined'?combinedRate(a):winRate(a);
+    const B=mode==='combined'?combinedRate(b):winRate(b);
+    return (B-A)||(total(b)-total(a))||((b.totalWins||0)-(a.totalWins||0))||teamName(a).localeCompare(teamName(b));
+  });
+  
+  const displayLimit = limit === 'all' ? filtered.length : parseInt(limit);
+  const team = filtered[index];
+  
+  if (!team) return;
+  
+  const teamId = `${team.combination?.animals?.join('-')}-${team.combination?.weapons?.join('-')}`;
+  const existingIndex = compareTeams.findIndex(ct => ct.id === teamId);
+  
+  if (existingIndex !== -1) {
+    // Remove from comparison
+    compareTeams.splice(existingIndex, 1);
+  } else {
+    // Add to comparison
+    if (compareTeams.length < MAX_COMPARE) {
+      compareTeams.push({
+        id: teamId,
+        team: team,
+        name: teamName(team)
+      });
+    }
+  }
+  
+  render();
+}
+
+function updateCompareUI() {
+  const floating = $('compareFloating');
+  const count = $('compareCount');
+  const listCount = $('compareListCount');
+  
+  if (compareTeams.length > 0) {
+    floating.style.display = 'flex';
+    count.textContent = compareTeams.length;
+    listCount.textContent = compareTeams.length;
+  } else {
+    floating.style.display = 'none';
+  }
+}
+
+function renderCompareDropdown() {
+  const dropdown = $('compareDropdown');
+  
+  if (compareTeams.length === 0) {
+    dropdown.innerHTML = '<div style="padding:10px;color:var(--muted);font-size:12px">No teams selected</div>';
+    return;
+  }
+  
+  dropdown.innerHTML = compareTeams.map((ct, i) => `
+    <div class="compare-dropdown-item">
+      <div class="compare-dropdown-team">
+        <strong>${escapeHtml(ct.name)}</strong>
+        <span>${escapeHtml(ct.team.combination?.animals?.join(' • ') || '')}</span>
+      </div>
+      <button class="compare-dropdown-remove" onclick="removeCompareTeam(${i})">Remove</button>
+    </div>
+  `).join('');
+}
+
+function removeCompareTeam(index) {
+  compareTeams.splice(index, 1);
+  renderCompareDropdown();
+  render();
+}
+
+function showCompareModal() {
+  if (compareTeams.length < 2) {
+    alert('Please select at least 2 teams to compare');
+    return;
+  }
+  
+  const modal = $('compareModal');
+  const body = $('compareModalBody');
+  
+  // Generate comparison data
+  const allTemplates = [...new Set(compareTeams.flatMap(ct => 
+    (ct.team.templateResults||[]).map(tr => tr.template)
+  ))].sort();
+  
+  // Team cards grid
+  let html = '<div class="compare-grid">';
+  compareTeams.forEach((ct, i) => {
+    const t = ct.team;
+    const cr = combinedRate(t);
+    const wr = winRate(t);
+    
+    html += `
+      <div class="compare-team-card">
+        <h3>Team ${i+1}: ${escapeHtml(ct.name)}</h3>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${escapeHtml(animals(t)||'')}</div>
+        <div class="compare-team-stats">
+          <div class="compare-stat"><div class="v g">${t.totalWins||0}</div><div class="k">Wins</div></div>
+          <div class="compare-stat"><div class="v y">${t.totalTies||0}</div><div class="k">Ties</div></div>
+          <div class="compare-stat"><div class="v r">${t.totalLosses||0}</div><div class="k">Losses</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:13px">
+          <div><strong>Win+Tie:</strong> ${pct(cr)}</div>
+          <div><strong>Win:</strong> ${pct(wr)}</div>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  
+  // Unique matchups section
+  html += '<div class="compare-section"><h3>🎯 Unique Wins (only this team wins)</h3><div class="compare-table">';
+  
+  compareTeams.forEach((ct, i) => {
+    const wins = (ct.team.templateResults||[]).filter(tr => tr.wins > 0).map(tr => tr.template);
+    const uniqueWins = wins.filter(template => {
+      return !compareTeams.some((otherCt, j) => {
+        if (i === j) return false;
+        return (otherCt.team.templateResults||[]).some(tr => tr.template === template && tr.wins > 0);
+      });
+    });
+    
+    if (uniqueWins.length > 0) {
+      html += `<div class="compare-table-row">
+        <h4>Team ${i+1} Only (${uniqueWins.length})</h4>
+        <div class="compare-table-teams">
+          ${uniqueWins.map(t => `<div class="compare-table-cell win"><span class="icon">✓</span>${escapeHtml(t)}</div>`).join('')}
+        </div>
+      </div>`;
+    }
+  });
+  
+  if (compareTeams.every(ct => {
+    const wins = (ct.team.templateResults||[]).filter(tr => tr.wins > 0).map(tr => tr.template);
+    const uniqueWins = wins.filter(template => {
+      return !compareTeams.some((otherCt, j) => {
+        if (compareTeams.indexOf(ct) === j) return false;
+        return (otherCt.team.templateResults||[]).some(tr => tr.template === template && tr.wins > 0);
+      });
+    });
+    return uniqueWins.length === 0;
+  })) {
+    html += '<div style="color:var(--muted);font-size:13px">No unique wins - all teams share their wins with others</div>';
+  }
+  
+  html += '</div></div>';
+  
+  // Unique ties section
+  html += '<div class="compare-section"><h3>🤝 Unique Ties (only this team ties)</h3><div class="compare-table">';
+  
+  compareTeams.forEach((ct, i) => {
+    const ties = (ct.team.templateResults||[]).filter(tr => tr.ties > 0).map(tr => tr.template);
+    const uniqueTies = ties.filter(template => {
+      return !compareTeams.some((otherCt, j) => {
+        if (i === j) return false;
+        return (otherCt.team.templateResults||[]).some(tr => tr.template === template && tr.ties > 0);
+      });
+    });
+    
+    if (uniqueTies.length > 0) {
+      html += `<div class="compare-table-row">
+        <h4>Team ${i+1} Only (${uniqueTies.length})</h4>
+        <div class="compare-table-teams">
+          ${uniqueTies.map(t => `<div class="compare-table-cell tie"><span class="icon">≈</span>${escapeHtml(t)}</div>`).join('')}
+        </div>
+      </div>`;
+    }
+  });
+  
+  html += '</div></div>';
+  
+  // All templates comparison
+  html += '<div class="compare-section"><h3>📋 All Template Results</h3><div class="compare-table">';
+  
+  allTemplates.forEach(template => {
+    html += `<div class="compare-table-row">
+      <h4>${escapeHtml(template)}</h4>
+      <div class="compare-table-teams">`;
+    
+    compareTeams.forEach((ct, i) => {
+      const result = (ct.team.templateResults||[]).find(tr => tr.template === template);
+      let resultClass = 'loss';
+      let resultText = '✗ Loss';
+      let icon = '✗';
+      
+      if (result) {
+        if (result.wins > 0) {
+          resultClass = 'win';
+          resultText = `✓ Win (×${result.wins})`;
+          icon = '✓';
+        } else if (result.ties > 0) {
+          resultClass = 'tie';
+          resultText = `≈ Tie (×${result.ties})`;
+          icon = '≈';
+        } else if (result.losses > 0) {
+          resultText = `✗ Loss (×${result.losses})`;
+        }
+      }
+      
+      html += `<div class="compare-table-cell ${resultClass}"><span class="icon">${icon}</span>Team ${i+1}: ${resultText}</div>`;
+    });
+    
+    html += '</div></div>';
+  });
+  
+  html += '</div></div>';
+  
+  body.innerHTML = html;
+  modal.style.display = 'flex';
 }
 
 // EVENT LISTENERS
@@ -337,6 +597,28 @@ $('exportBtn').onclick=()=>{
   a.click();
   URL.revokeObjectURL(url);
 };
+
+// Compare controls
+$('compareShowBtn').onclick = showCompareModal;
+$('compareModalClose').onclick = () => $('compareModal').style.display = 'none';
+$('compareModal').onclick = (e) => {
+  if (e.target === $('compareModal')) $('compareModal').style.display = 'none';
+};
+
+let dropdownOpen = false;
+$('compareListBtn').onclick = () => {
+  dropdownOpen = !dropdownOpen;
+  $('compareDropdown').style.display = dropdownOpen ? 'block' : 'none';
+  if (dropdownOpen) renderCompareDropdown();
+};
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.compare-list-btn') && !e.target.closest('.compare-dropdown')) {
+    dropdownOpen = false;
+    $('compareDropdown').style.display = 'none';
+  }
+});
 
 $('file').onchange=async e=>{
   const f=e.target.files[0];
