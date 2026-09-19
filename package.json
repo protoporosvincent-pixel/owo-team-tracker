@@ -10,6 +10,8 @@
     "register-weapons": "node src/registerWeapons.js",
     "register-new": "node src/registerNewWeapons.js",
     "test-teams": "node src/neonutilTester.js",
+    "rl-teams": "node src/rlTester.js",
+    "compare": "node src/compareTesters.js",
     "quick-test": "node src/quickTest.js",
     "optimize": "node src/teamOptimizer.js",
     "auto-optimize": "node src/autoOptimize.js"

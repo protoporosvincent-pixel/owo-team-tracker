@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-09-19T18:51:26.366Z",
-  "totalTeamsTested": 4940,
+  "generatedAt": "2026-09-19T19:28:27.186Z",
+  "totalTeamsTested": 5000,
   "currentBestScore": 73.91304347826086,
   "predictions": [
     {
       "rank": 1,
       "tier": "Uncommon",
       "animals": [
+        "gorilla",
         "owl",
-        "deer",
-        "squid"
+        "deer"
       ],
       "weaponCodes": [
-        "FNFQU4",
         "FO9991",
+        "FO49TC",
         "FNFCUM"
       ],
       "weaponNames": [
-        "Vampiric Staff",
         "Energy Staff",
+        "Defender's Aegis",
         "Great Sword"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 29.12,
+      "predictedScore": 29.45,
       "confidence": "High"
     },
     {
@@ -30,43 +30,43 @@
       "tier": "Uncommon",
       "animals": [
         "owl",
-        "squid",
-        "lion"
+        "gorilla",
+        "fox"
       ],
       "weaponCodes": [
-        "FO998Y",
-        "FO49TC",
-        "FNFCUM"
+        "FNFQU4",
+        "FO9991",
+        "FO49TC"
       ],
       "weaponNames": [
-        "Vanguard's Banner",
-        "Defender's Aegis",
-        "Great Sword"
+        "Vampiric Staff",
+        "Energy Staff",
+        "Defender's Aegis"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 28.43,
+      "predictedScore": 29.31,
       "confidence": "High"
     },
     {
       "rank": 3,
       "tier": "Uncommon",
       "animals": [
-        "deer",
-        "gorilla",
-        "owl"
+        "lion",
+        "squid",
+        "gorilla"
       ],
       "weaponCodes": [
-        "FNPEK8",
+        "FO49TC",
         "FNFCUM",
-        "FJMG28"
+        "FO9991"
       ],
       "weaponNames": [
-        "Empowered Staff of Purity",
+        "Defender's Aegis",
         "Great Sword",
-        "Resurrection Staff"
+        "Energy Staff"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 28.24,
+      "predictedScore": 28.14,
       "confidence": "High"
     },
     {
@@ -74,154 +74,154 @@
       "tier": "Uncommon",
       "animals": [
         "owl",
-        "gorilla",
-        "fox"
+        "squid",
+        "deer"
       ],
       "weaponCodes": [
-        "FO998Y",
-        "FNFQU4",
-        "FNFCUP"
+        "FNFCUM",
+        "FNFCUP",
+        "FO9991"
       ],
       "weaponNames": [
-        "Vanguard's Banner",
-        "Vampiric Staff",
-        "Staff of Corruption"
+        "Great Sword",
+        "Staff of Corruption",
+        "Energy Staff"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 27.81,
+      "predictedScore": 28.11,
       "confidence": "High"
     },
     {
       "rank": 5,
       "tier": "Uncommon",
       "animals": [
+        "deer",
         "owl",
-        "gorilla",
-        "lion"
+        "squid"
       ],
       "weaponCodes": [
-        "FNPEK8",
-        "FJMG28",
-        "FNFCUP"
+        "FO998Y",
+        "FNFCUM",
+        "FNPE1R"
       ],
       "weaponNames": [
-        "Empowered Staff of Purity",
-        "Resurrection Staff",
-        "Staff of Corruption"
+        "Vanguard's Banner",
+        "Great Sword",
+        "Orb of Potency"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 27.39,
+      "predictedScore": 27.94,
       "confidence": "High"
     },
     {
       "rank": 6,
       "tier": "Uncommon",
       "animals": [
+        "gorilla",
         "owl",
-        "lion",
-        "fox"
+        "squid"
       ],
       "weaponCodes": [
-        "FNPE1R",
-        "FNFQU4",
+        "FNPEK8",
+        "FNFCUN",
         "FO49TC"
       ],
       "weaponNames": [
-        "Orb of Potency",
-        "Vampiric Staff",
+        "Empowered Staff of Purity",
+        "Spirit Staff",
         "Defender's Aegis"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.76,
+      "predictedScore": 27.72,
       "confidence": "High"
     },
     {
       "rank": 7,
       "tier": "Uncommon",
       "animals": [
-        "deer",
-        "lion",
+        "owl",
+        "squid",
         "gorilla"
       ],
       "weaponCodes": [
-        "FO9991",
-        "FNPE1R",
-        "FNFQU4"
+        "FO998Y",
+        "FNFCUN",
+        "FO49TC"
       ],
       "weaponNames": [
-        "Energy Staff",
-        "Orb of Potency",
-        "Vampiric Staff"
+        "Vanguard's Banner",
+        "Spirit Staff",
+        "Defender's Aegis"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.64,
-      "confidence": "Medium"
+      "predictedScore": 27.66,
+      "confidence": "High"
     },
     {
       "rank": 8,
       "tier": "Uncommon",
       "animals": [
+        "owl",
         "gorilla",
-        "deer",
-        "lion"
+        "deer"
       ],
       "weaponCodes": [
-        "FNFCUM",
-        "FO998Y",
-        "FO9991"
+        "FNFQU4",
+        "FJMG28",
+        "FNFCUN"
       ],
       "weaponNames": [
-        "Great Sword",
-        "Vanguard's Banner",
-        "Energy Staff"
+        "Vampiric Staff",
+        "Resurrection Staff",
+        "Spirit Staff"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.63,
-      "confidence": "Medium"
+      "predictedScore": 27.53,
+      "confidence": "High"
     },
     {
       "rank": 9,
       "tier": "Uncommon",
       "animals": [
         "owl",
-        "spider",
-        "deer"
+        "squid",
+        "fox"
       ],
       "weaponCodes": [
+        "FNFCUM",
         "FNFCUN",
-        "FO9991",
-        "FNFCUM"
+        "FNPEK8"
       ],
       "weaponNames": [
+        "Great Sword",
         "Spirit Staff",
-        "Energy Staff",
-        "Great Sword"
+        "Empowered Staff of Purity"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.05,
-      "confidence": "Medium"
+      "predictedScore": 27.17,
+      "confidence": "High"
     },
     {
       "rank": 10,
       "tier": "Uncommon",
       "animals": [
-        "owl",
         "lion",
-        "deer"
+        "gorilla",
+        "squid"
       ],
       "weaponCodes": [
-        "FJMG28",
         "FO998Y",
-        "FO49TC"
+        "FNFQU4",
+        "FNPE1R"
       ],
       "weaponNames": [
-        "Resurrection Staff",
         "Vanguard's Banner",
-        "Defender's Aegis"
+        "Vampiric Staff",
+        "Orb of Potency"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 25.87,
-      "confidence": "Medium"
+      "predictedScore": 27.16,
+      "confidence": "High"
     }
   ]
 }

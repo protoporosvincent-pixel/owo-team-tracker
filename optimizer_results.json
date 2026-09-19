@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "totalTeamsTested": 4940,
+    "totalTeamsTested": 5000,
     "currentBestScore": 73.91304347826086,
     "currentBestTeam": {
       "combination": {
@@ -175,105 +175,105 @@
         }
       ]
     },
-    "generatedAt": "2026-09-19T18:51:26.365Z"
+    "generatedAt": "2026-09-19T19:28:27.184Z"
   },
   "topAnimals": [
     {
       "name": "owl",
-      "avgScore": 24.302773659194802,
-      "count": 1037
+      "avgScore": 24.248881471354142,
+      "count": 1061
     },
     {
       "name": "gorilla",
-      "avgScore": 21.134862309301575,
-      "count": 1322
+      "avgScore": 21.167267126993895,
+      "count": 1343
     },
     {
       "name": "squid",
-      "avgScore": 18.78265641278505,
-      "count": 497
+      "avgScore": 19.0484017706287,
+      "count": 517
     },
     {
       "name": "fox",
-      "avgScore": 17.481540718486873,
-      "count": 418
+      "avgScore": 17.5191700259793,
+      "count": 431
     },
     {
       "name": "fish",
-      "avgScore": 16.778321162993258,
-      "count": 413
-    },
-    {
-      "name": "deer",
-      "avgScore": 16.41693366817131,
-      "count": 3399
+      "avgScore": 16.806929288726693,
+      "count": 418
     },
     {
       "name": "lion",
-      "avgScore": 16.351051422238797,
-      "count": 3179
+      "avgScore": 16.415081716817685,
+      "count": 3196
+    },
+    {
+      "name": "deer",
+      "avgScore": 16.39789680471918,
+      "count": 3421
     },
     {
       "name": "spider",
-      "avgScore": 14.662250275604352,
-      "count": 2800
+      "avgScore": 14.656713533846945,
+      "count": 2815
     },
     {
       "name": "shrimp",
-      "avgScore": 14.48277895883589,
-      "count": 434
+      "avgScore": 14.444939605789704,
+      "count": 446
     },
     {
       "name": "camel",
-      "avgScore": 14.217157819249206,
-      "count": 474
+      "avgScore": 14.181981174361303,
+      "count": 485
     }
   ],
   "topWeapons": [
-    {
-      "name": "Energy Staff",
-      "avgScore": 26.704545454545418,
-      "count": 136
-    },
     {
       "name": "Empowered Arcane Scepter",
       "avgScore": 26.666666666666668,
       "count": 30
     },
     {
+      "name": "Energy Staff",
+      "avgScore": 26.50056465273853,
+      "count": 140
+    },
+    {
       "name": "Great Sword",
-      "avgScore": 25.84989854110775,
-      "count": 411
+      "avgScore": 25.872620343319845,
+      "count": 414
     },
     {
       "name": "Vampiric Staff",
-      "avgScore": 24.484408387861134,
-      "count": 544
+      "avgScore": 24.519066645020004,
+      "count": 553
     },
     {
       "name": "Empowered Leeching Scythe [157]",
-      "avgScore": 22.204138572425023,
-      "count": 68
+      "avgScore": 22.70149510225125,
+      "count": 69
     },
     {
       "name": "Defender's Aegis",
-      "avgScore": 20.954313964281443,
-      "count": 1518
+      "avgScore": 21.01493532925119,
+      "count": 1531
     },
     {
       "name": "Pristine Vampiric Staff",
-      "avgScore": 20.769479693964776,
-      "count": 171
+      "avgScore": 20.74983913962676,
+      "count": 172
     },
     {
       "name": "Glacial Axe",
-      "avgScore": 20.53136317148889,
-      "count": 83
+      "avgScore": 20.38699265086072,
+      "count": 87
     },
     {
       "name": "Orb of Potency",
-      "avgScore": 20.23415977961435,
-      "count": 990
+      "avgScore": 20.09047768955428,
+      "count": 1017
     },
     {
       "name": "Flame Staff",
@@ -281,19 +281,19 @@
       "count": 112
     },
     {
+      "name": "Empowered Staff of Purity",
+      "avgScore": 19.3858315597446,
+      "count": 260
+    },
+    {
       "name": "Fine Leeching Scythe",
-      "avgScore": 19.289463699401583,
-      "count": 63
+      "avgScore": 19.370819533051844,
+      "count": 67
     },
     {
       "name": "Empowered Bleeding Gaze [0]",
       "avgScore": 19.266837169650472,
       "count": 51
-    },
-    {
-      "name": "Empowered Staff of Purity",
-      "avgScore": 19.223020254994537,
-      "count": 257
     },
     {
       "name": "Defender's Aegis [44]",
@@ -302,8 +302,8 @@
     },
     {
       "name": "Decent Glacial Axe",
-      "avgScore": 18.998109640831753,
-      "count": 46
+      "avgScore": 18.963922294172058,
+      "count": 47
     }
   ],
   "topFormations": [
@@ -352,308 +352,308 @@
     {
       "name": "Cclaw-Shield-Crune",
       "beatenBy": 0,
-      "tiedBy": 137
+      "tiedBy": 139
     },
     {
       "name": "Wand Crune Sstaff",
       "beatenBy": 3,
-      "tiedBy": 137
+      "tiedBy": 142
     },
     {
       "name": "Wand-Crune",
       "beatenBy": 1,
-      "tiedBy": 234
+      "tiedBy": 241
     },
     {
       "name": "Rstaff-Pstaff-Mag",
       "beatenBy": 6,
-      "tiedBy": 292
+      "tiedBy": 297
     },
     {
       "name": "Pstall Disruption",
-      "beatenBy": 311,
+      "beatenBy": 313,
       "tiedBy": 57
     },
     {
       "name": "Spider_Crune",
       "beatenBy": 2,
-      "tiedBy": 429
+      "tiedBy": 433
     },
     {
       "name": "Estaff Gem-Crune",
       "beatenBy": 0,
-      "tiedBy": 464
+      "tiedBy": 467
     }
   ],
   "predictedOptimalTeams": [
     {
       "animals": [
+        "gorilla",
         "owl",
-        "deer",
-        "squid"
+        "deer"
+      ],
+      "weapons": [
+        "FO9991",
+        "FO49TC",
+        "FNFCUM"
+      ],
+      "weaponNames": [
+        "Energy Staff",
+        "Defender's Aegis",
+        "Great Sword"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 29.449120516434466,
+      "breakdown": {
+        "animalScore": 20.604681801022405,
+        "weaponScore": 24.462706775103186,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 25.12236279155861,
+        "diversityScore": 100,
+        "historicalScore": 23.630678853372423
+      }
+    },
+    {
+      "animals": [
+        "owl",
+        "gorilla",
+        "fox"
       ],
       "weapons": [
         "FNFQU4",
         "FO9991",
-        "FNFCUM"
+        "FO49TC"
       ],
       "weaponNames": [
         "Vampiric Staff",
         "Energy Staff",
-        "Great Sword"
+        "Defender's Aegis"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 29.124929521180025,
+      "predictedScore": 29.312155276158563,
       "breakdown": {
-        "animalScore": 19.834121246717054,
-        "weaponScore": 25.679617461171432,
+        "animalScore": 20.978439541442444,
+        "weaponScore": 24.011522209003243,
         "formationScore": 27.87174066243835,
-        "synergyScore": 23.05840129361621,
+        "synergyScore": 23.98912475948823,
         "diversityScore": 100,
-        "historicalScore": 24.392345779764625
+        "historicalScore": 25.37514851543388
+      }
+    },
+    {
+      "animals": [
+        "lion",
+        "squid",
+        "gorilla"
+      ],
+      "weapons": [
+        "FO49TC",
+        "FNFCUM",
+        "FO9991"
+      ],
+      "weaponNames": [
+        "Defender's Aegis",
+        "Great Sword",
+        "Energy Staff"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 28.137509999144147,
+      "breakdown": {
+        "animalScore": 18.87691687148009,
+        "weaponScore": 24.46270677510319,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 22.66172132214275,
+        "diversityScore": 100,
+        "historicalScore": 22.161552775627243
       }
     },
     {
       "animals": [
         "owl",
         "squid",
-        "lion"
-      ],
-      "weapons": [
-        "FO998Y",
-        "FO49TC",
-        "FNFCUM"
-      ],
-      "weaponNames": [
-        "Vanguard's Banner",
-        "Defender's Aegis",
-        "Great Sword"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 28.425576411021105,
-      "breakdown": {
-        "animalScore": 19.812160498072885,
-        "weaponScore": 21.852556049170136,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 24.675622385331568,
-        "diversityScore": 100,
-        "historicalScore": 24.736205185352905
-      }
-    },
-    {
-      "animals": [
-        "deer",
-        "gorilla",
-        "owl"
-      ],
-      "weapons": [
-        "FNPEK8",
-        "FNFCUM",
-        "FJMG28"
-      ],
-      "weaponNames": [
-        "Empowered Staff of Purity",
-        "Great Sword",
-        "Resurrection Staff"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 28.235299931007905,
-      "breakdown": {
-        "animalScore": 20.61818987888923,
-        "weaponScore": 20.303063954800997,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 25.20213041189734,
-        "diversityScore": 100,
-        "historicalScore": 23.72157841407677
-      }
-    },
-    {
-      "animals": [
-        "owl",
-        "gorilla",
-        "fox"
-      ],
-      "weapons": [
-        "FO998Y",
-        "FNFQU4",
-        "FNFCUP"
-      ],
-      "weaponNames": [
-        "Vanguard's Banner",
-        "Vampiric Staff",
-        "Staff of Corruption"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 27.808254127397152,
-      "breakdown": {
-        "animalScore": 20.973058895661083,
-        "weaponScore": 19.088830070919578,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 23.87667071824215,
-        "diversityScore": 100,
-        "historicalScore": 25.359061706772966
-      }
-    },
-    {
-      "animals": [
-        "owl",
-        "gorilla",
-        "lion"
-      ],
-      "weapons": [
-        "FNPEK8",
-        "FJMG28",
-        "FNFCUP"
-      ],
-      "weaponNames": [
-        "Empowered Staff of Purity",
-        "Resurrection Staff",
-        "Staff of Corruption"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 27.38519343360599,
-      "breakdown": {
-        "animalScore": 20.59622913024506,
-        "weaponScore": 16.362639835357207,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 25.792333032143983,
-        "diversityScore": 100,
-        "historicalScore": 25.37018776792657
-      }
-    },
-    {
-      "animals": [
-        "owl",
-        "lion",
-        "fox"
-      ],
-      "weapons": [
-        "FNPE1R",
-        "FNFQU4",
-        "FO49TC"
-      ],
-      "weaponNames": [
-        "Orb of Potency",
-        "Vampiric Staff",
-        "Defender's Aegis"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 26.75786091001166,
-      "breakdown": {
-        "animalScore": 19.378455266640156,
-        "weaponScore": 21.89096071058564,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 23.697179193676757,
-        "diversityScore": 75,
-        "historicalScore": 24.641175915538756
-      }
-    },
-    {
-      "animals": [
-        "deer",
-        "lion",
-        "gorilla"
-      ],
-      "weapons": [
-        "FO9991",
-        "FNPE1R",
-        "FNFQU4"
-      ],
-      "weaponNames": [
-        "Energy Staff",
-        "Orb of Potency",
-        "Vampiric Staff"
-      ],
-      "formation": "Crune Meta",
-      "predictedScore": 26.636301180033506,
-      "breakdown": {
-        "animalScore": 17.967615799903893,
-        "weaponScore": 23.807704540673637,
-        "formationScore": 27.87174066243835,
-        "synergyScore": 20.66569111676426,
-        "diversityScore": 100,
-        "historicalScore": 17.106116505266623
-      }
-    },
-    {
-      "animals": [
-        "gorilla",
-        "deer",
-        "lion"
+        "deer"
       ],
       "weapons": [
         "FNFCUM",
-        "FO998Y",
+        "FNFCUP",
         "FO9991"
       ],
       "weaponNames": [
         "Great Sword",
-        "Vanguard's Banner",
+        "Staff of Corruption",
         "Energy Staff"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.625070610137517,
+      "predictedScore": 28.11134060241802,
       "breakdown": {
-        "animalScore": 17.967615799903893,
-        "weaponScore": 23.76929987925813,
+        "animalScore": 19.898393348900672,
+        "weaponScore": 22.188624247697984,
         "formationScore": 27.87174066243835,
-        "synergyScore": 20.66569111676426,
+        "synergyScore": 23.15138431748946,
         "diversityScore": 100,
-        "historicalScore": 17.106116505266623
+        "historicalScore": 24.285451459364577
       }
     },
     {
       "animals": [
+        "deer",
         "owl",
-        "spider",
-        "deer"
+        "squid"
       ],
       "weapons": [
-        "FNFCUN",
-        "FO9991",
-        "FNFCUM"
+        "FO998Y",
+        "FNFCUM",
+        "FNPE1R"
       ],
       "weaponNames": [
-        "Spirit Staff",
-        "Energy Staff",
-        "Great Sword"
+        "Vanguard's Banner",
+        "Great Sword",
+        "Orb of Potency"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 26.053106314239656,
+      "predictedScore": 27.936101898265534,
       "breakdown": {
-        "animalScore": 18.46065253432349,
-        "weaponScore": 22.064125370615404,
+        "animalScore": 19.898393348900672,
+        "weaponScore": 21.59847482215611,
         "formationScore": 27.87174066243835,
-        "synergyScore": 20.042200549562725,
+        "synergyScore": 23.151384317489455,
         "diversityScore": 100,
-        "historicalScore": 16.53920879730593
+        "historicalScore": 24.285451459364577
       }
     },
     {
       "animals": [
+        "gorilla",
         "owl",
-        "lion",
-        "deer"
+        "squid"
       ],
       "weapons": [
-        "FJMG28",
-        "FO998Y",
+        "FNPEK8",
+        "FNFCUN",
         "FO49TC"
       ],
       "weaponNames": [
-        "Resurrection Staff",
-        "Vanguard's Banner",
+        "Empowered Staff of Purity",
+        "Spirit Staff",
         "Defender's Aegis"
       ],
       "formation": "Crune Meta",
-      "predictedScore": 25.86744094311127,
+      "predictedScore": 27.717990605428156,
       "breakdown": {
-        "animalScore": 19.023586249868302,
-        "weaponScore": 18.514680891567792,
+        "animalScore": 21.488183456325583,
+        "weaponScore": 18.038727302919565,
         "formationScore": 27.87174066243835,
-        "synergyScore": 22.34556988037995,
+        "synergyScore": 24.146002120043686,
         "diversityScore": 100,
-        "historicalScore": 17.408331871091118
+        "historicalScore": 25.346269014253256
+      }
+    },
+    {
+      "animals": [
+        "owl",
+        "squid",
+        "gorilla"
+      ],
+      "weapons": [
+        "FO998Y",
+        "FNFCUN",
+        "FO49TC"
+      ],
+      "weaponNames": [
+        "Vanguard's Banner",
+        "Spirit Staff",
+        "Defender's Aegis"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.663566483482757,
+      "breakdown": {
+        "animalScore": 21.488183456325576,
+        "weaponScore": 17.85422559420277,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 24.146002120043686,
+        "diversityScore": 100,
+        "historicalScore": 25.346269014253256
+      }
+    },
+    {
+      "animals": [
+        "owl",
+        "gorilla",
+        "deer"
+      ],
+      "weapons": [
+        "FNFQU4",
+        "FJMG28",
+        "FNFCUN"
+      ],
+      "weaponNames": [
+        "Vampiric Staff",
+        "Resurrection Staff",
+        "Spirit Staff"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.52769821650017,
+      "breakdown": {
+        "animalScore": 20.604681801022405,
+        "weaponScore": 18.024462688351427,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 25.12236279155861,
+        "diversityScore": 100,
+        "historicalScore": 23.630678853372423
+      }
+    },
+    {
+      "animals": [
+        "owl",
+        "squid",
+        "fox"
+      ],
+      "weapons": [
+        "FNFCUM",
+        "FNFCUN",
+        "FNPEK8"
+      ],
+      "weaponNames": [
+        "Great Sword",
+        "Spirit Staff",
+        "Empowered Staff of Purity"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.17299389511992,
+      "breakdown": {
+        "animalScore": 20.27215108932071,
+        "weaponScore": 19.657955640942447,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 22.844216981963996,
+        "diversityScore": 100,
+        "historicalScore": 22.128168274413344
+      }
+    },
+    {
+      "animals": [
+        "lion",
+        "gorilla",
+        "squid"
+      ],
+      "weapons": [
+        "FO998Y",
+        "FNFQU4",
+        "FNPE1R"
+      ],
+      "weaponNames": [
+        "Vanguard's Banner",
+        "Vampiric Staff",
+        "Orb of Potency"
+      ],
+      "formation": "Crune Meta",
+      "predictedScore": 27.157218163405766,
+      "breakdown": {
+        "animalScore": 18.876916871480095,
+        "weaponScore": 21.147290256056166,
+        "formationScore": 27.87174066243835,
+        "synergyScore": 22.66172132214275,
+        "diversityScore": 100,
+        "historicalScore": 22.161552775627243
       }
     }
   ]

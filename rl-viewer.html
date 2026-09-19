@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RL Team Tester - Thompson Sampling Analytics</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1d2430;--text:#e6edf3;--muted:#8b949e;--border:#30363d;--accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--rl:#9945ff;--shadow:0 12px 30px rgba(0,0,0,.25)}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#172033 0,#0d1117 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.container{max-width:1400px;margin:auto;padding:28px 20px 50px}.hero{display:flex;gap:18px;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap}.title{font-size:clamp(28px,4vw,48px);font-weight:850;letter-spacing:-.04em;margin:0;background:linear-gradient(135deg,var(--rl),#7b2cbf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.subtitle{color:var(--muted);margin:8px 0 0;max-width:760px;line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;background:rgba(22,27,34,.86);border:1px solid var(--border);padding:12px;border-radius:16px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:10;backdrop-filter:blur(10px)}
+button,input,select{font:inherit}.tab{border:1px solid var(--border);background:#21262d;color:var(--text);padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700;transition:all .2s}.tab:hover{background:#2d3643;border-color:var(--accent)}.tab.active{background:var(--rl);color:#fff;border-color:var(--rl)}
+input[type=text],input[type=number]{min-width:260px;flex:1;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none;transition:border .2s}
+input[type=text]:focus,input[type=number]:focus,select:focus{border-color:var(--rl);box-shadow:0 0 0 2px rgba(153,69,255,.15)}
+select{min-width:230px;max-width:320px;background:#0d1117;color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:11px;outline:none;font:inherit;transition:border .2s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:15px;padding:16px;transition:transform .2s,box-shadow .2s}.stat:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}.stat .n{font-size:26px;font-weight:850}.stat .l{color:var(--muted);font-size:13px;margin-top:4px}.stat.rl{border-color:var(--rl);background:linear-gradient(180deg,rgba(153,69,255,.15),rgba(123,44,191,.1))}
+.notice{padding:11px 13px;border:1px dashed var(--border);background:rgba(22,27,34,.75);border-radius:12px;color:var(--muted);font-size:13px;margin-bottom:18px}.notice strong{color:var(--text)}.notice .pulse{display:inline-block;width:8px;height:8px;background:var(--rl);border-radius:50%;animation:pulse 2s ease infinite;margin-right:6px}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(180deg,#171d26,#12171f);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.35)}.card-head{display:flex;gap:14px;padding:18px;border-bottom:1px solid var(--border)}.rank{width:44px;height:44px;border-radius:13px;background:#21262d;display:grid;place-items:center;font-size:19px;font-weight:900;flex:none}.rank.gold{background:linear-gradient(135deg,#ffd700,#ffed4e);color:#854d0e}.rank.silver{background:linear-gradient(135deg,#c0c0c0,#e5e5e5);color:#475569}.rank.bronze{background:linear-gradient(135deg,#cd7f32,#e9a168);color:#78350f}
+.team{min-width:0}.team h2{font-size:19px;line-height:1.2;margin:0 0 6px}.meta{display:flex;gap:7px;flex-wrap:wrap;color:var(--muted);font-size:12px}.pill{padding:4px 8px;border-radius:999px;background:#21262d;border:1px solid var(--border)}.pill.formation{background:var(--accent);color:#07111c;font-weight:700;border-color:var(--accent)}.pill.rl-method{background:var(--rl);color:#fff;font-weight:700;border-color:var(--rl)}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:14px 18px}.metric{background:#0d1117;border:1px solid var(--border);border-radius:11px;padding:10px;transition:transform .2s}.metric:hover{transform:scale(1.05)}.metric .v{font-weight:850;font-size:17px}.metric .k{font-size:11px;color:var(--muted);margin-top:2px}.g{color:var(--good)}.y{color:var(--warn)}.r{color:var(--bad)}.rl-color{color:var(--rl)}
+.details{padding:0 18px 18px}.details summary{cursor:pointer;color:#c9d1d9;font-weight:750;padding:8px 0;transition:color .2s}.details summary:hover{color:var(--rl)}.match-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.matchbox{background:#0d1117;border:1px solid var(--border);border-radius:12px;padding:12px}.matchbox h3{font-size:13px;margin:0 0 10px;color:var(--rl)}.matchbox ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-height:260px;overflow:auto}.matchbox li{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#c9d1d9;padding:6px 0;border-bottom:1px solid #21262d}.matchbox li:last-child{border-bottom:0}.count{color:var(--muted);font-variant-numeric:tabular-nums}.empty{color:var(--muted);font-size:12px}
+footer{color:var(--muted);text-align:center;font-size:12px;margin-top:24px}@media(max-width:950px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.match-cols{grid-template-columns:1fr}.toolbar{position:static}.container{padding:18px 12px 40px}.stats{grid-template-columns:1fr 1fr}input[type=text]{min-width:0;width:100%}}
+.view-controls{display:flex;gap:8px;align-items:center}.limit-control{display:flex;align-items:center;gap:8px}.limit-control label{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}.limit-control select{min-width:120px}
+.rl-badge{display:inline-block;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;background:var(--rl);color:#fff;margin-left:8px}
+.learning-indicator{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(153,69,255,.15);border:1px solid var(--rl);border-radius:8px;font-size:12px;color:var(--rl);font-weight:600}.learning-indicator .dot{width:8px;height:8px;background:var(--rl);border-radius:50%;animation:pulse 1.5s ease infinite}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div>
+      <h1 class="title">🤖 RL Team Tester</h1>
+      <p class="subtitle">Thompson Sampling Algorithm • Reinforcement Learning • Local Analytics Dashboard • Auto-updates every test</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button class="tab active" id="btnCombined">Top · Win + Tie</button>
+    <button class="tab" id="btnWin">Top · Win Rate</button>
+    
+    <input id="search" type="text" placeholder="🔍 Search team, animal, weapon, or formation..." />
+    
+    <div class="view-controls">
+      <div class="limit-control">
+        <label>Show:</label>
+        <select id="limitResults">
+          <option value="10">Top 10</option>
+          <option value="25">Top 25</option>
+          <option value="50">Top 50</option>
+          <option value="100">Top 100</option>
+          <option value="all">All Teams</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice" id="notice">
+    <span class="pulse"></span>
+    <strong>RL Tester Active</strong> • Thompson Sampling with 20% exploration • Data source: <code>rl_results.json</code>
+  </div>
+  
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"></div>
+  
+  <footer>
+    Made with ❤️ for the OwO community • RL-powered testing • Last updated: <span id="lastUpdate">Never</span>
+  </footer>
+</div>
+
+<script>
+let allData = [];
+let currentSort = 'combined';
+let currentLimit = 10;
+let autoRefresh = null;
+
+// Load data
+async function loadData() {
+  try {
+    const response = await fetch('./rl_results.json?_=' + Date.now());
+    const data = await response.json();
+    allData = data;
+    render();
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+  } catch (error) {
+    document.getElementById('notice').innerHTML = `
+      <strong>⚠️ Error loading data</strong> • Make sure <code>rl_results.json</code> exists in the same folder • Error: ${error.message}
+    `;
+  }
+}
+
+// Render stats
+function renderStats() {
+  const totalTeams = allData.length;
+  const avgWinRate = totalTeams > 0 ? (allData.reduce((sum, t) => sum + (t.winRate || 0), 0) / totalTeams).toFixed(2) : 0;
+  const totalMatches = allData.reduce((sum, t) => sum + (t.totalWins || 0) + (t.totalTies || 0) + (t.totalLosses || 0), 0);
+  const bestTeam = allData.length > 0 ? Math.max(...allData.map(t => ((t.totalWins + t.totalTies) / ((t.totalWins || 0) + (t.totalTies || 0) + (t.totalLosses || 1)) * 100))) : 0;
+  
+  // Count exploration vs exploitation
+  const exploration = allData.filter(t => t.combination?._meta?.method === 'random_exploration').length;
+  const exploitation = allData.filter(t => t.combination?._meta?.method === 'thompson_sampling').length;
+  
+  document.getElementById('stats').innerHTML = `
+    <div class="stat rl">
+      <div class="n rl-color">${totalTeams}</div>
+      <div class="l">Teams Tested (RL)</div>
+    </div>
+    <div class="stat">
+      <div class="n">${bestTeam.toFixed(2)}%</div>
+      <div class="l">Best Win+Tie Rate</div>
+    </div>
+    <div class="stat">
+      <div class="n">${totalMatches.toLocaleString()}</div>
+      <div class="l">Total Battles</div>
+    </div>
+    <div class="stat rl">
+      <div class="n rl-color">${exploration}/${exploitation}</div>
+      <div class="l">Explore / Exploit</div>
+    </div>
+  `;
+}
+
+// Render grid
+function renderGrid() {
+  const searchTerm = document.getElementById('search').value.toLowerCase();
+  const limit = currentLimit === 'all' ? Infinity : parseInt(currentLimit);
+  
+  // Filter
+  let filtered = allData.filter(team => {
+    const animals = (team.combination?.animals || []).join(' ').toLowerCase();
+    const weapons = (team.combination?.weaponNames || []).join(' ').toLowerCase();
+    const formation = (team.combination?._meta?.formation || '').toLowerCase();
+    const searchStr = animals + ' ' + weapons + ' ' + formation;
+    return searchStr.includes(searchTerm);
+  });
+  
+  // Sort
+  if (currentSort === 'combined') {
+    filtered.sort((a, b) => {
+      const aTotal = (a.totalWins || 0) + (a.totalTies || 0) + (a.totalLosses || 0);
+      const bTotal = (b.totalWins || 0) + (b.totalTies || 0) + (b.totalLosses || 0);
+      const aRate = aTotal > 0 ? ((a.totalWins + a.totalTies) / aTotal) : 0;
+      const bRate = bTotal > 0 ? ((b.totalWins + b.totalTies) / bTotal) : 0;
+      return bRate - aRate;
+    });
+  } else {
+    filtered.sort((a, b) => (b.winRate || 0) - (a.winRate || 0));
+  }
+  
+  // Limit
+  filtered = filtered.slice(0, limit);
+  
+  // Render
+  const grid = document.getElementById('grid');
+  grid.innerHTML = filtered.map((team, idx) => {
+    const animals = team.combination?.animals || [];
+    const weapons = team.combination?.weaponNames || [];
+    const weaponCodes = team.combination?.weapons || [];
+    const formation = team.combination?._meta?.formation || 'Unknown';
+    const method = team.combination?._meta?.method || 'unknown';
+    const total = (team.totalWins || 0) + (team.totalTies || 0) + (team.totalLosses || 0);
+    const winTieRate = total > 0 ? (((team.totalWins + team.totalTies) / total) * 100).toFixed(2) : 0;
+    const winRate = (team.winRate || 0).toFixed(2);
+    
+    let rankClass = '';
+    if (idx === 0) rankClass = 'gold';
+    else if (idx === 1) rankClass = 'silver';
+    else if (idx === 2) rankClass = 'bronze';
+    
+    const methodLabel = method === 'thompson_sampling' ? '🎯 Sampled' : '🎲 Explored';
+    const methodClass = method === 'thompson_sampling' ? 'rl-method' : '';
+    
+    // Get template results
+    const templateResults = team.templateResults || [];
+    const wins = templateResults.filter(t => t.wins > 0);
+    const ties = templateResults.filter(t => t.ties > 0);
+    const losses = templateResults.filter(t => t.losses > 0);
+    
+    return `
+      <div class="card">
+        <div class="card-head">
+          <div class="rank ${rankClass}">#${idx + 1}</div>
+          <div class="team">
+            <h2>${weapons.map((w, i) => `${w} [${weaponCodes[i]}]`).join(' / ')}</h2>
+            <div class="meta">
+              <span>${animals.join(' • ')}</span>
+              <span class="pill formation">${formation}</span>
+              <span class="pill ${methodClass}">${methodLabel}</span>
+              <span>${total} matches</span>
+            </div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="v g">${team.totalWins || 0}</div>
+            <div class="k">Wins</div>
+          </div>
+          <div class="metric">
+            <div class="v y">${team.totalTies || 0}</div>
+            <div class="k">Ties</div>
+          </div>
+          <div class="metric">
+            <div class="v r">${team.totalLosses || 0}</div>
+            <div class="k">Losses</div>
+          </div>
+          <div class="metric">
+            <div class="v rl-color">${winTieRate}%</div>
+            <div class="k">Win + Tie</div>
+          </div>
+          <div class="metric">
+            <div class="v">${winRate}%</div>
+            <div class="k">Win Rate</div>
+          </div>
+        </div>
+        <details class="details">
+          <summary>📊 Show template matchups (${wins.length}W / ${ties.length}T / ${losses.length}L)</summary>
+          <div class="match-cols">
+            <div class="matchbox">
+              <h3>✅ Wins (${wins.length})</h3>
+              ${wins.length > 0 ? `<ul>${wins.map(t => `<li><span>${t.template}</span></li>`).join('')}</ul>` : '<div class="empty">None</div>'}
+            </div>
+            <div class="matchbox">
+              <h3>🤝 Ties (${ties.length})</h3>
+              ${ties.length > 0 ? `<ul>${ties.map(t => `<li><span>${t.template}</span></li>`).join('')}</ul>` : '<div class="empty">None</div>'}
+            </div>
+            <div class="matchbox">
+              <h3>❌ Losses (${losses.length})</h3>
+              ${losses.length > 0 ? `<ul>${losses.map(t => `<li><span>${t.template}</span></li>`).join('')}</ul>` : '<div class="empty">None</div>'}
+            </div>
+          </div>
+        </details>
+      </div>
+    `;
+  }).join('');
+}
+
+// Render everything
+function render() {
+  renderStats();
+  renderGrid();
+}
+
+// Event listeners
+document.getElementById('btnCombined').addEventListener('click', () => {
+  currentSort = 'combined';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('btnCombined').classList.add('active');
+  render();
+});
+
+document.getElementById('btnWin').addEventListener('click', () => {
+  currentSort = 'win';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('btnWin').classList.add('active');
+  render();
+});
+
+document.getElementById('search').addEventListener('input', render);
+
+document.getElementById('limitResults').addEventListener('change', (e) => {
+  currentLimit = e.target.value;
+  render();
+});
+
+// Auto-refresh every 10 seconds
+autoRefresh = setInterval(loadData, 10000);
+
+// Initial load
+loadData();
+</script>
+</body>
+</html>
