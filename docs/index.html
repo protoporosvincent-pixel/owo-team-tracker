@@ -375,8 +375,7 @@ function getTier(score) {
 }
 
 function getTierIcon(tier) {
-  const tierName = tier.replace(' ', '_');
-  return `<img src="rankings/${tierName}_%28Tier%29.png" alt="${tier}" title="${tier}" style="width:24px;height:24px;vertical-align:middle;margin-right:4px" />`;
+  return `<img src="rankings/${tier}.png" alt="${tier}" title="${tier}" style="width:24px;height:24px;vertical-align:middle;margin-right:4px" />`;
 }
 
 function render(){
